@@ -15,14 +15,14 @@
     });
   });
 
-  /* Enquiry popups.
-     The mockup marks every CTA that should open a form with a "▸ POPUP" pill.
-     Until the form is built, they route through one handler. */
-  document.querySelectorAll('a .pop').forEach(function (pill) {
-    var trigger = pill.closest('a');
+  /* Enquiry buttons.
+     The CTAs that should open an enquiry form carry data-enquiry. They used
+     to be marked with a visible "▸ POPUP" pill from the mockup; the hook is
+     now an attribute so nothing shows on the page. */
+  document.querySelectorAll('a[data-enquiry]').forEach(function (trigger) {
     trigger.addEventListener('click', function (e) {
       e.preventDefault();
-      openEnquiry(trigger.textContent.replace('▸ POPUP', '').trim());
+      openEnquiry(trigger.textContent.trim());
     });
   });
 

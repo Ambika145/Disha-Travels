@@ -73,7 +73,6 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;font-weight:600;lin
 .btn-outline{background:transparent;color:var(--purple-700);border:1px solid var(--purple-700)}
 .btn-outline:hover{background:var(--purple-700);color:#fff}
 .tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:var(--r-pill);background:var(--pink-soft);color:var(--purple)}
-.pop{font-size:10px;font-weight:600;color:#B8860B;letter-spacing:.06em}
 
 /* OFFERS TICKER */
 .offers{background:var(--purple-700);color:var(--gold);overflow:hidden;position:relative;z-index:6}
@@ -185,7 +184,6 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;font-weight:600;lin
  color:#fff;font-weight:500}
 .hcta .btn-ghost:hover{background:rgba(255,255,255,.15);border-color:#fff;transform:translateY(-2px)}
 .hcta .btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-.hcta .pop{font-size:9.5px;opacity:.7}
 .hnote{display:flex;align-items:center;gap:8px;margin-top:clamp(10px,1.6vh,18px) !important;
  font-size:11.5px !important;color:rgba(255,255,255,.62) !important}
 .hnote i{color:var(--gold);font-size:13px}
@@ -389,7 +387,6 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;font-weight:600;lin
   .hcta{gap:9px;width:100%;margin-top:clamp(12px,1.8vh,20px)}
   .hcta .btn{flex:1 1 calc(50% - 5px);text-align:center;padding:12px 10px;font-size:12.5px;
    display:flex;align-items:center;justify-content:center;min-height:44px}
-  .hcta .pop{display:none}
   .hfeat{gap:7px;margin-top:clamp(12px,2vh,22px)}
   .hfeat li{font-size:11px;padding:6px 11px 6px 9px}
   .hart-stack{display:none}
@@ -561,7 +558,21 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;font-weight:600;lin
    and lights each stop as it passes. Stop coordinates are read off the SVG
    path itself (js/main.js), so the dots always land exactly on the curve.
    ====================================================================== */
-.svcs{background:var(--surface);overflow:hidden}
+/* The route is drawn on a plotting surface: a faint dot grid echoing the
+   dotted flight path, masked so it fades out before the section edges, with
+   soft brand-coloured light pooled behind the curve. All CSS, no asset. */
+.svcs{overflow:hidden;
+ background:
+  radial-gradient(ellipse 58% 52% at 50% 48%,rgba(253,185,19,.09),transparent 70%),
+  radial-gradient(ellipse 46% 56% at 10% 26%,rgba(169,63,169,.09),transparent 72%),
+  radial-gradient(ellipse 46% 56% at 90% 74%,rgba(142,44,142,.07),transparent 72%),
+  var(--surface)}
+.svcs:before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+ background-image:radial-gradient(circle,rgba(142,44,142,.22) 1px,transparent 1.3px);
+ background-size:26px 26px;
+ -webkit-mask-image:radial-gradient(ellipse 76% 68% at 50% 52%,#000 30%,transparent 76%);
+         mask-image:radial-gradient(ellipse 76% 68% at 50% 52%,#000 30%,transparent 76%)}
+.svcs .wrap{position:relative;z-index:1}
 .route{position:relative;width:100%;aspect-ratio:1200/360;
  margin:clamp(6px,1.5vw,18px) 0 clamp(18px,2.4vw,30px)}
 .route-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
