@@ -558,21 +558,36 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;font-weight:600;lin
    and lights each stop as it passes. Stop coordinates are read off the SVG
    path itself (js/main.js), so the dots always land exactly on the curve.
    ====================================================================== */
-/* The route is drawn on a plotting surface: a faint dot grid echoing the
-   dotted flight path, masked so it fades out before the section edges, with
-   soft brand-coloured light pooled behind the curve. All CSS, no asset. */
+/* The route is flown across a dotted world map (assets/worldmap.svg): real
+   coastlines sampled on a lattice, Miller projection, with India picked out in
+   gold because that is where every trip starts. Warm light pools along the
+   flight path and a soft veil under it keeps the dotted route reading first. */
 .svcs{overflow:hidden;
  background:
-  radial-gradient(ellipse 58% 52% at 50% 48%,rgba(253,185,19,.09),transparent 70%),
-  radial-gradient(ellipse 46% 56% at 10% 26%,rgba(169,63,169,.09),transparent 72%),
-  radial-gradient(ellipse 46% 56% at 90% 74%,rgba(142,44,142,.07),transparent 72%),
+  radial-gradient(ellipse 58% 52% at 50% 54%,rgba(253,185,19,.12),transparent 70%),
+  radial-gradient(ellipse 42% 50% at 0% 6%,rgba(169,63,169,.07),transparent 70%),
+  radial-gradient(ellipse 44% 52% at 100% 92%,rgba(142,44,142,.08),transparent 70%),
   var(--surface)}
+
+/* the map itself, feathered at every edge so it never reads as a pasted box */
 .svcs:before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
- background-image:radial-gradient(circle,rgba(142,44,142,.22) 1px,transparent 1.3px);
- background-size:26px 26px;
- -webkit-mask-image:radial-gradient(ellipse 76% 68% at 50% 52%,#000 30%,transparent 76%);
-         mask-image:radial-gradient(ellipse 76% 68% at 50% 52%,#000 30%,transparent 76%)}
+ background:url(../assets/worldmap.svg) center center / 106% auto no-repeat;
+ -webkit-mask-image:radial-gradient(ellipse 62% 58% at 50% 52%,#000 42%,transparent 86%);
+         mask-image:radial-gradient(ellipse 62% 58% at 50% 52%,#000 42%,transparent 86%)}
+
+/* a veil under the flight path, so the dotted route reads first */
+.svcs:after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+ background:radial-gradient(ellipse 54% 26% at 50% 58%,rgba(255,255,255,.55),rgba(255,255,255,0) 74%)}
 .svcs .wrap{position:relative;z-index:1}
+
+/* the section goes tall and narrow once the route stands up, so the map is
+   scaled past the viewport and anchored on Asia rather than squeezed to a strip */
+@media (max-width:900px){
+  .svcs:before{background-size:260% auto;background-position:72% 46%;
+   -webkit-mask-image:radial-gradient(ellipse 80% 54% at 50% 48%,#000 34%,transparent 84%);
+           mask-image:radial-gradient(ellipse 80% 54% at 50% 48%,#000 34%,transparent 84%)}
+  .svcs:after{background:radial-gradient(ellipse 70% 40% at 50% 50%,rgba(255,255,255,.6),rgba(255,255,255,0) 76%)}
+}
 .route{position:relative;width:100%;aspect-ratio:1200/360;
  margin:clamp(6px,1.5vw,18px) 0 clamp(18px,2.4vw,30px)}
 .route-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
