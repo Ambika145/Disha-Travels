@@ -115,12 +115,12 @@
   })();
 
   /* Keep the hero exactly one viewport tall.
-     The offers ticker and header sit above it and their height changes with
-     the breakpoint (and when the nav wraps), so measure rather than guess. */
+     The header overlays it; we still measure its height so slide copy
+     starts below the nav rather than under it. */
   (function () {
     var hero = document.querySelector('.hero');
     if (!hero) return;
-    var above = [document.querySelector('.offers'), document.querySelector('.hdr')];
+    var above = [document.querySelector('.hdr')];
 
     function measure() {
       var px = above.reduce(function (sum, el) {
@@ -565,6 +565,60 @@
     window.addEventListener('resize', onScroll, { passive: true });
     frame();
   })();
+
+  /* Galleries lightbox.
+     Prints on the wall are buttons; clicking one opens a full-bleed viewer
+     with prev/next and Escape. Body scroll locks while it is open. */
+  (function () {
+    var wall = document.querySelector('.gal-live');
+    var lb = document.getElementById('gal-lb');
+    if (!wall || !lb) return;
+    var opens = Array.prototype.slice.call(wall.querySelectorAll('.gal-track:not([aria-hidden]) .gal-open'));
+    var img = lb.querySelector('img');
+    var cap = lb.querySelector('figcaption');
+    var i = 0;
+
+    function show(n) {
+      i = (n + opens.length) % opens.length;
+      var btn = opens[i];
+      img.src = btn.getAttribute('data-src');
+      img.alt = btn.querySelector('img').alt || '';
+      cap.textContent = btn.getAttribute('data-cap') || '';
+    }
+    function openAt(n) {
+      show(n);
+      lb.hidden = false;
+      document.body.style.overflow = 'hidden';
+      lb.querySelector('.gal-lb-x').focus();
+    }
+    function close() {
+      lb.hidden = true;
+      document.body.style.overflow = '';
+      img.removeAttribute('src');
+    }
+
+    wall.addEventListener('click', function (e) {
+      var btn = e.target.closest('.gal-open');
+      if (!btn) return;
+      var src = btn.getAttribute('data-src');
+      var n = 0;
+      for (var k = 0; k < opens.length; k++) {
+        if (opens[k].getAttribute('data-src') === src) { n = k; break; }
+      }
+      openAt(n);
+    });
+    lb.querySelector('.gal-lb-x').addEventListener('click', close);
+    lb.querySelector('.prev').addEventListener('click', function () { show(i - 1); });
+    lb.querySelector('.next').addEventListener('click', function () { show(i + 1); });
+    lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (lb.hidden) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') show(i - 1);
+      if (e.key === 'ArrowRight') show(i + 1);
+    });
+  })();
+
 
   /* Keep the footer copyright current */
   document.querySelectorAll('.fbot').forEach(function (el) {
