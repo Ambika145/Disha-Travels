@@ -146,9 +146,9 @@
           <div class="hmarks">
             <span class="hmarks-cap">Accredited &amp; partnered with</span>
             <div class="hmarks-row">
-              <span class="hmark h">Heena<small>Tours &amp; Travels</small></span>
-              <span class="hmark f">FORAM<small>Worldwide</small></span>
-              <span class="hmark i">IATA<small>Accredited*</small></span>
+              <span class="hmark h"><img src="assets/hena-logo.png" alt="Heena Tours &amp; Travels"></span>
+              <span class="hmark f"><img src="assets/foram-worldwide-logo.png" alt="FORAM Worldwide"></span>
+              <span class="hmark i"><img src="assets/iata-logo-header.svg" alt="IATA Accredited"></span>
             </div>
           </div>
           <div class="hcred">
@@ -287,45 +287,119 @@
 </section>
 
 <!-- 5 TOP DESTINATIONS -->
-<section class="sec dst">
+<section class="sec dst" id="destinations">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Top Destinations</div>
-      <h2>Some places you visit. These, you fall for.</h2>
-      <p>The destinations our travellers ask for by name, and come back from with too many photographs.</p>
+
+    <div class="dst-head">
+      <div>
+        <div class="eyebrow">Top Destinations</div>
+        <h2>Some places you visit. These, you fall for.</h2>
+        <p>The destinations our travellers ask for by name, and come back from with too many photographs.</p>
+      </div>
+      <div class="dst-count" aria-hidden="true"><b id="dst-num">01</b><span>/ 07</span></div>
     </div>
-    <div class="dst-grid">
-      <div class="dcard big bali" tabindex="0">
-        <img src="assets/destinations/bali.jpg" alt="Rice terraces in Bali" loading="lazy">
-        <div class="ov"><h3>Bali</h3><div class="dtxt"><p>Rice terraces at sunrise, a villa with nobody else in it.</p></div></div>
+
+    <div class="dst-stage">
+
+      <div class="dst-hero" data-tone="bali">
+        <div class="dst-slides">
+          <figure class="dslide bali is-on" data-i="0" aria-hidden="false">
+            <div class="dken"><img src="assets/destinations/bali.jpg" alt="Rice terraces in Bali"></div>
+          </figure>
+          <figure class="dslide dubai" data-i="1" aria-hidden="true">
+            <div class="dken"><img src="assets/destinations/dubai.jpg" alt="Dubai coastline and skyline"></div>
+          </figure>
+          <figure class="dslide viet" data-i="2" aria-hidden="true">
+            <div class="dken"><img src="assets/destinations/vietnam.jpg" alt="The Golden Bridge at Ba Na Hills, Vietnam"></div>
+          </figure>
+          <figure class="dslide paris" data-i="3" aria-hidden="true">
+            <div class="dken"><img src="assets/destinations/paris.jpg" alt="Paris panorama with the Seine and the Eiffel Tower"></div>
+          </figure>
+          <figure class="dslide maldives" data-i="4" aria-hidden="true">
+            <div class="dken"><img src="assets/destinations/maldives.jpg" alt="Overwater villas in the Maldives"></div>
+          </figure>
+          <figure class="dslide swiss" data-i="5" aria-hidden="true">
+            <div class="dken"><img src="assets/destinations/switzerland.jpg" alt="Staubbach Falls at Lauterbrunnen, Switzerland"></div>
+          </figure>
+          <figure class="dslide thai" data-i="6" aria-hidden="true">
+            <div class="dken"><img src="assets/destinations/thailand.jpg" alt="Long tail boat at Railay Beach, Krabi, Thailand"></div>
+          </figure>
+        </div>
+        <div class="dst-wash" aria-hidden="true"></div>
+        <div class="dst-frame" aria-hidden="true"></div>
+        <span class="dst-badge">Most requested</span>
+        <div class="dst-copy" aria-live="polite">
+          <span class="dmeta">
+            <em class="dno">01</em>
+            <span class="dplace"><i class="bi bi-geo-alt-fill"></i><span class="dplace-t">Indonesia</span></span>
+          </span>
+          <h3>Bali</h3>
+          <p>Rice terraces at sunrise, a villa with nobody else in it.</p>
+          <a class="dcta" href="#">Explore destination <i class="bi bi-arrow-right"></i></a>
+        </div>
       </div>
-      <div class="dcard dubai" tabindex="0">
-        <img src="assets/destinations/dubai.jpg" alt="Dubai coastline and skyline" loading="lazy">
-        <div class="ov"><h3>Dubai</h3><div class="dtxt"><p>Desert one evening, skyline the next.</p></div></div>
-      </div>
-      <div class="dcard viet" tabindex="0">
-        <img src="assets/destinations/vietnam.jpg" alt="The Golden Bridge at Ba Na Hills, Vietnam" loading="lazy">
-        <span class="new">RECOMMENDED ADD</span>
-        <div class="ov"><h3>Vietnam</h3><div class="dtxt"><p>Limestone bays, lantern-lit lanes, a coastline that keeps going.</p></div></div>
-      </div>
-      <div class="dcard paris" tabindex="0">
-        <img src="assets/destinations/paris.jpg" alt="Paris panorama with the Seine and the Eiffel Tower" loading="lazy">
-        <div class="ov"><h3>Paris</h3><div class="dtxt"><p>Everything you’ve seen a thousand times, and none of it prepares you.</p></div></div>
-      </div>
-      <div class="dcard maldives" tabindex="0">
-        <img src="assets/destinations/maldives.jpg" alt="Overwater villas in the Maldives" loading="lazy">
-        <div class="ov"><h3>Maldives</h3><div class="dtxt"><p>Where the floor of your room is the sea.</p></div></div>
-      </div>
-      <div class="dcard swiss" tabindex="0">
-        <img src="assets/destinations/switzerland.jpg" alt="Staubbach Falls at Lauterbrunnen, Switzerland" loading="lazy">
-        <div class="ov"><h3>Switzerland</h3><div class="dtxt"><p>Green valleys, white peaks, a train that threads both.</p></div></div>
-      </div>
-      <div class="dcard thai" tabindex="0">
-        <img src="assets/destinations/thailand.jpg" alt="Long tail boat at Railay Beach, Krabi, Thailand" loading="lazy">
-        <div class="ov"><h3>Thailand</h3><div class="dtxt"><p>Temples, street food and islands, all in 1 week.</p></div></div>
-      </div>
+
+      <nav class="dst-index" aria-label="Choose a destination">
+        <div class="ditms">
+          <span class="dind" aria-hidden="true"></span>
+          <button type="button" class="ditm is-on" aria-pressed="true"
+                  data-i="0" data-name="Bali" data-place="Indonesia"
+                  data-copy="Rice terraces at sunrise, a villa with nobody else in it."
+                  data-badge="Most requested" data-tone="bali">
+            <span class="ditm-ph"><img src="assets/destinations/bali.jpg" alt=""></span>
+            <span class="ditm-tx"><em>01</em><b>Bali</b><small>Indonesia</small></span>
+          </button>
+          <button type="button" class="ditm" aria-pressed="false"
+                  data-i="1" data-name="Dubai" data-place="UAE"
+                  data-copy="Desert one evening, skyline the next."
+                  data-badge="" data-tone="dubai">
+            <span class="ditm-ph"><img src="assets/destinations/dubai.jpg" alt=""></span>
+            <span class="ditm-tx"><em>02</em><b>Dubai</b><small>UAE</small></span>
+          </button>
+          <button type="button" class="ditm" aria-pressed="false"
+                  data-i="2" data-name="Vietnam" data-place="Southeast Asia"
+                  data-copy="Limestone bays, lantern-lit lanes, a coastline that keeps going."
+                  data-badge="Recommended" data-tone="viet">
+            <span class="ditm-ph"><img src="assets/destinations/vietnam.jpg" alt=""></span>
+            <span class="ditm-tx"><em>03</em><b>Vietnam</b><small>Southeast Asia</small></span>
+          </button>
+          <button type="button" class="ditm" aria-pressed="false"
+                  data-i="3" data-name="Paris" data-place="France"
+                  data-copy="Everything you’ve seen a thousand times, and none of it prepares you."
+                  data-badge="" data-tone="paris">
+            <span class="ditm-ph"><img src="assets/destinations/paris.jpg" alt=""></span>
+            <span class="ditm-tx"><em>04</em><b>Paris</b><small>France</small></span>
+          </button>
+          <button type="button" class="ditm" aria-pressed="false"
+                  data-i="4" data-name="Maldives" data-place="Indian Ocean"
+                  data-copy="Where the floor of your room is the sea."
+                  data-badge="" data-tone="maldives">
+            <span class="ditm-ph"><img src="assets/destinations/maldives.jpg" alt=""></span>
+            <span class="ditm-tx"><em>05</em><b>Maldives</b><small>Indian Ocean</small></span>
+          </button>
+          <button type="button" class="ditm" aria-pressed="false"
+                  data-i="5" data-name="Switzerland" data-place="Swiss Alps"
+                  data-copy="Green valleys, white peaks, a train that threads both."
+                  data-badge="" data-tone="swiss">
+            <span class="ditm-ph"><img src="assets/destinations/switzerland.jpg" alt=""></span>
+            <span class="ditm-tx"><em>06</em><b>Switzerland</b><small>Swiss Alps</small></span>
+          </button>
+          <button type="button" class="ditm" aria-pressed="false"
+                  data-i="6" data-name="Thailand" data-place="Thailand"
+                  data-copy="Temples, street food and islands, all in 1 week."
+                  data-badge="" data-tone="thai">
+            <span class="ditm-ph"><img src="assets/destinations/thailand.jpg" alt=""></span>
+            <span class="ditm-tx"><em>07</em><b>Thailand</b><small>Thailand</small></span>
+          </button>
+        </div>
+      </nav>
+
     </div>
-    <div style="margin-top:32px"><a class="btn btn-outline" href="#">See All Destinations</a></div>
+
+    <div class="dst-foot">
+      <p>Every destination is planned as a full package: flights, stays, transfers and meals, with nothing waiting in the small print.</p>
+      <a class="btn btn-outline" href="#">See All Destinations</a>
+    </div>
   </div>
 </section>
 
@@ -499,7 +573,7 @@
         <span class="prole"><i class="bi bi-patch-check-fill"></i>Authorised Franchisee Partner</span>
       </div>
       <div class="plogo i">
-        <span class="pslot"><span class="pmark">IATA<small>Accredited</small></span></span>
+        <span class="pslot"><img class="pmark-img" src="assets/iata-logo-header.svg" alt="IATA Accredited" loading="lazy"></span>
         <span class="prole"><i class="bi bi-patch-check-fill"></i>Direct air ticketing authority</span>
       </div>
     </div>

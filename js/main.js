@@ -63,11 +63,11 @@
     });
   }
 
-  /* Destination and Collection cards.
+  /* Collection cards.
      Details reveal on hover, which touch devices don't have — so tapping
      (or pressing Enter/Space on a focused card) toggles one open instead.
      Opening a card closes its siblings; clicking a link inside just follows it. */
-  document.querySelectorAll('.dcard, .ccard').forEach(function (card) {
+  document.querySelectorAll('.ccard').forEach(function (card) {
     function toggle() {
       var open = card.classList.contains('is-open');
       Array.prototype.forEach.call(card.parentNode.children, function (c) {
@@ -384,67 +384,185 @@
 
 
   /* Top Destinations.
-     Wipes the cards in once on first scroll, then drifts each photo against
-     the scroll for depth. The grid ships visible; this only opts in to the
-     animation, so nothing is hidden if the script never runs. */
+     Bali opens as the featured photograph. Hovering (fine pointer) or
+     clicking an index entry crossfades the hero, slides the gold indicator,
+     and restyles the counter. The section ships visible; JS opts in to the
+     reveal and to Ken Burns / parallax, and does neither if reduced-motion
+     is on. A 4s timeout shows the section even if the observer never fires. */
   (function () {
-    var grid = document.querySelector('.dst-grid');
-    if (!grid) return;
-    var cards = [].slice.call(grid.querySelectorAll('.dcard'));
+    var root = document.querySelector('.dst');
+    if (!root) return;
+
+    var hero = root.querySelector('.dst-hero');
+    var slides = [].slice.call(root.querySelectorAll('.dslide'));
+    var items = [].slice.call(root.querySelectorAll('.ditm'));
+    var copy = root.querySelector('.dst-copy');
+    var badge = root.querySelector('.dst-badge');
+    var num = root.querySelector('#dst-num');
+    var ind = root.querySelector('.dind');
+    var placeT = root.querySelector('.dplace-t');
     var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    var current = 0;
+    var hoverTimer = null;
+    var copyTimer = null;
+
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+    function moveInd(i) {
+      if (!ind || !items[i]) return;
+      var list = ind.parentNode;
+      if (!list) return;
+      var item = items[i];
+      var top = item.offsetTop;
+      var h = item.offsetHeight;
+      ind.style.top = top + 'px';
+      ind.style.height = h + 'px';
+    }
+
+    function restartKen(slide) {
+      if (still || !slide) return;
+      var ken = slide.querySelector('.dken');
+      if (!ken) return;
+      ken.style.animation = 'none';
+      void ken.offsetWidth;
+      ken.style.animation = '';
+    }
+
+    function paint(i, instant) {
+      var item = items[i];
+      if (!item) return;
+      var name = item.getAttribute('data-name') || '';
+      var place = item.getAttribute('data-place') || '';
+      var text = item.getAttribute('data-copy') || '';
+      var tag = item.getAttribute('data-badge') || '';
+      var delay = still || instant ? 0 : 220;
+
+      function write() {
+        var no = copy.querySelector('.dno');
+        var h3 = copy.querySelector('h3');
+        var p = copy.querySelector('p');
+        if (no) no.textContent = pad(i + 1);
+        if (placeT) placeT.textContent = place;
+        if (h3) h3.textContent = name;
+        if (p) p.textContent = text;
+        if (badge) {
+          badge.textContent = tag;
+          badge.classList.toggle('is-off', !tag);
+        }
+        if (num) num.textContent = pad(i + 1);
+        var cta = copy.querySelector('.dcta');
+        if (cta) cta.setAttribute('aria-label', 'Explore ' + name);
+        copy.classList.remove('is-out');
+        copy.classList.remove('is-fresh');
+        void copy.offsetWidth;
+        copy.classList.add('is-fresh');
+      }
+
+      if (delay) {
+        copy.classList.add('is-out');
+        clearTimeout(copyTimer);
+        copyTimer = setTimeout(write, delay);
+      } else {
+        copy.classList.remove('is-out');
+        write();
+      }
+    }
+
+    function show(i, instant) {
+      i = Math.max(0, Math.min(i, items.length - 1));
+      if (i === current && !instant) return;
+      slides.forEach(function (s, n) {
+        var on = n === i;
+        s.classList.toggle('is-on', on);
+        s.setAttribute('aria-hidden', on ? 'false' : 'true');
+      });
+      items.forEach(function (el, n) {
+        var on = n === i;
+        el.classList.toggle('is-on', on);
+        el.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      restartKen(slides[i]);
+      paint(i, instant);
+      moveInd(i);
+      current = i;
+      if (items[i] && window.matchMedia('(max-width:640px)').matches) {
+        items[i].scrollIntoView({ inline: 'nearest', block: 'nearest', behavior: still ? 'auto' : 'smooth' });
+      }
+    }
+
+    function queue(i) {
+      clearTimeout(hoverTimer);
+      hoverTimer = setTimeout(function () { show(i); }, 70);
+    }
+
+    items.forEach(function (el, i) {
+      if (fine) {
+        el.addEventListener('mouseenter', function () { queue(i); });
+      }
+      el.addEventListener('click', function () {
+        clearTimeout(hoverTimer);
+        show(i);
+      });
+      el.addEventListener('focus', function () { show(i); });
+    });
+
+    if (fine) {
+      var list = root.querySelector('.ditms');
+      if (list) {
+        list.addEventListener('mouseleave', function () { clearTimeout(hoverTimer); });
+      }
+    }
+
+    window.addEventListener('resize', function () { moveInd(current); });
+    moveInd(0);
+
+    /* Reveal + parallax. Same three-way safety net as before: observer,
+       scroll check, and a timeout that gives up waiting. */
     if (still) return;
 
-    grid.classList.add('can-reveal');
+    root.classList.add('can-reveal');
 
     var shown = false;
     function reveal() {
       if (shown) return;
       shown = true;
-      grid.classList.add('is-in');
+      root.classList.add('is-in');
+      requestAnimationFrame(function () { moveInd(current); });
     }
-    /* Checked from three directions, because a reveal that hides content must
-       never depend on one signal: the observer, the scroll handler, and a
-       timeout that gives up waiting and shows the cards regardless. */
     function maybeReveal() {
-      var r = grid.getBoundingClientRect();
-      if (r.top < window.innerHeight * 0.9 && r.bottom > 0) reveal();
+      var r = root.getBoundingClientRect();
+      if (r.top < window.innerHeight * 0.88 && r.bottom > 0) reveal();
     }
     if (window.IntersectionObserver) {
       var io = new IntersectionObserver(function (entries) {
         if (entries[0].isIntersecting) { reveal(); io.disconnect(); }
-      }, {threshold: 0.15});
-      io.observe(grid);
+      }, { threshold: 0.12 });
+      io.observe(root);
     }
     setTimeout(reveal, 4000);
 
-    /* Parallax. Each photo is drawn slightly larger than its frame, so it can
-       drift without exposing an edge. Depth varies per card so the row does
-       not move as one slab. */
-    var DRIFT = 16, ticking = false;
-
+    var DRIFT = 22, ticking = false;
     function frame() {
       ticking = false;
+      var slide = slides[current];
+      if (!slide) return;
+      var img = slide.querySelector('img');
+      if (!img) return;
+      var r = hero.getBoundingClientRect();
       var vh = window.innerHeight;
-      cards.forEach(function (c, i) {
-        var r = c.getBoundingClientRect();
-        if (r.bottom < -200 || r.top > vh + 200) return;
-        // -1 when the card sits below the fold, +1 when it has risen above
-        var p = ((vh / 2) - (r.top + r.height / 2)) / (vh / 2);
-        var depth = 0.6 + (i % 3) * 0.2;
-        var img = c.querySelector('img');
-        if (img) img.style.setProperty('--par', (p * DRIFT * depth).toFixed(1) + 'px');
-      });
+      if (r.bottom < -120 || r.top > vh + 120) return;
+      var p = ((vh / 2) - (r.top + r.height / 2)) / (vh / 2);
+      img.style.setProperty('--par', (p * DRIFT).toFixed(1) + 'px');
     }
-
     function onScroll() {
-      maybeReveal();          // never wait on a frame to un-hide content
+      maybeReveal();
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(frame);
     }
-
-    window.addEventListener('scroll', onScroll, {passive: true});
-    window.addEventListener('resize', onScroll, {passive: true});
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
     frame();
   })();
 
