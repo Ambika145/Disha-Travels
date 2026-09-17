@@ -485,17 +485,21 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;font-weight:600;lin
 /* small background clouds + a live plane flying toward the seal */
 .pos-sky{position:absolute;z-index:0;pointer-events:none;overflow:visible;
  left:46%;right:-4%;top:-8px;bottom:0}
-.pos-cloud{position:absolute;opacity:.88;filter:drop-shadow(0 8px 12px rgba(142,44,142,.08))}
-.pos-cloud-1{width:170px;left:6%;top:4%;
+.pos-cloud{position:absolute;line-height:1;font-style:normal;color:#fff;
+ font-family:"bootstrap-icons" !important;
+ filter:drop-shadow(0 8px 12px rgba(142,44,142,.08))}
+.pos-cloud-1{font-size:92px;left:6%;top:4%;opacity:.88;
  animation:posdrift 16s ease-in-out infinite}
-.pos-cloud-2{width:130px;left:38%;top:46%;opacity:.7;
+.pos-cloud-2{font-size:68px;left:38%;top:46%;opacity:.7;
  animation:posdrift 22s ease-in-out infinite reverse}
-.pos-cloud-3{width:96px;right:8%;top:12%;opacity:.8;
+.pos-cloud-3{font-size:52px;right:8%;top:12%;opacity:.8;
  animation:posdrift 18s ease-in-out infinite}
-.pos-air{position:absolute;left:0;top:28%;width:68px;height:auto;
+.pos-air{position:absolute;left:0;top:28%;font-size:34px;line-height:1;
+ font-style:normal;color:var(--purple-500);
+ font-family:"bootstrap-icons" !important;
  filter:drop-shadow(0 8px 12px rgba(40,70,110,.28));
  offset-path:path("M 8 90 C 70 18 150 150 310 72");
- offset-rotate:auto;offset-anchor:center;
+ offset-rotate:auto 90deg;offset-anchor:center;
  animation:posair 8.5s linear infinite}
 @keyframes posair{
   0%{offset-distance:0%;opacity:0}
@@ -594,7 +598,7 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;font-weight:600;lin
   .pos-head{grid-template-columns:minmax(0,1fr);gap:34px;align-items:start}
   .pos-seal{justify-content:flex-start}
   .pos-sky{left:auto;right:0;top:-6px;width:220px;height:140px;bottom:auto}
-  .pos-air{width:52px}
+  .pos-air{font-size:28px}
   .pos-cloud-2{display:none}
   .pillars{grid-template-columns:minmax(0,1fr);margin-top:34px}
   .pillar{padding:26px 0;border-bottom:1px solid var(--line)}
