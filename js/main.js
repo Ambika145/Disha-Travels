@@ -577,6 +577,39 @@
     var img = lb.querySelector('img');
     var cap = lb.querySelector('figcaption');
     var i = 0;
+    var nowName = document.getElementById('gal-now-name');
+    var running = false;
+
+    wall.querySelectorAll('.gal-open').forEach(function (btn) {
+      var cap = btn.getAttribute('data-cap') || '';
+      var place = cap.split('—')[0].trim();
+      if (place) btn.setAttribute('data-place', place);
+    });
+
+    function tickNow() {
+      if (!running) return;
+      var cx = window.innerWidth / 2;
+      var best = null, bestD = Infinity;
+      var nodes = wall.querySelectorAll('.gal-open');
+      for (var n = 0; n < nodes.length; n++) {
+        var r = nodes[n].getBoundingClientRect();
+        if (r.right < cx - 80 || r.left > cx + 80) continue;
+        var d = Math.abs(r.left + r.width / 2 - cx);
+        if (d < bestD) { bestD = d; best = nodes[n]; }
+      }
+      if (best && nowName) {
+        var place = best.getAttribute('data-place') || '';
+        if (place && nowName.textContent !== place) nowName.textContent = place;
+      }
+      requestAnimationFrame(tickNow);
+    }
+
+    if (window.IntersectionObserver && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      new IntersectionObserver(function (entries) {
+        running = entries[0].isIntersecting;
+        if (running) requestAnimationFrame(tickNow);
+      }, { threshold: 0.15 }).observe(wall);
+    }
 
     function show(n) {
       i = (n + opens.length) % opens.length;

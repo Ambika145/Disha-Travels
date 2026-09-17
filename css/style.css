@@ -714,7 +714,7 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;font-weight:600;lin
 .stop:hover .stag{border-color:var(--c,var(--purple-mid));color:var(--purple-deep)}
 
 .route-foot{display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap;
- padding-top:clamp(18px,2.2vw,28px);border-top:1px solid var(--line)}
+ padding-top:clamp(18px,2.2vw,28px)}
 .route-foot p{font-size:14.5px;color:var(--muted);margin:0;max-width:40em}
 .route-cta{display:flex;gap:12px;flex-wrap:wrap}
 
@@ -1227,7 +1227,7 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;font-weight:600;lin
    run continuously — top band left, bottom band right. Hover pauses a
    row so a frame can be opened. Reduced motion stops the belts.
    ====================================================================== */
-.gal{background:var(--purple-900);color:#fff;padding:clamp(56px,6vw,88px) 0 0;
+.gal{background:var(--purple-900);color:#fff;padding:clamp(56px,6vw,88px) 0 clamp(36px,4vw,56px);
  overflow:hidden}
 .gal-head{margin-bottom:clamp(28px,3.2vw,44px)}
 .gal .eyebrow{color:#F3D9EC;margin-bottom:14px}
@@ -1235,8 +1235,23 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;font-weight:600;lin
  max-width:16em;text-wrap:balance}
 .gal-head p{color:rgba(255,255,255,.68);font-size:16px;max-width:540px;margin:0;text-wrap:pretty}
 
-.gal-live{display:flex;flex-direction:column}
-.gal-row{overflow:hidden}
+.gal-live{position:relative;display:flex;flex-direction:column}
+.gal-finder{position:absolute;left:50%;top:50%;z-index:3;pointer-events:none;
+ width:min(36vw,360px);height:78%;transform:translate(-50%,-50%)}
+.gal-finder i{position:absolute;width:22px;height:22px;border-color:var(--gold);border-style:solid;border-width:0}
+.gal-finder i:nth-child(1){top:0;left:0;border-top-width:2px;border-left-width:2px}
+.gal-finder i:nth-child(2){top:0;right:0;border-top-width:2px;border-right-width:2px}
+.gal-finder i:nth-child(3){bottom:0;left:0;border-bottom-width:2px;border-left-width:2px}
+.gal-finder i:nth-child(4){bottom:0;right:0;border-bottom-width:2px;border-right-width:2px}
+
+.gal-row{position:relative;overflow:hidden;padding:12px 0;background:#120312}
+.gal-row:before,.gal-row:after{content:"";position:absolute;left:0;right:0;z-index:2;
+ height:12px;pointer-events:none;
+ background:radial-gradient(circle at 50% 50%,#2A0A2A 2.4px,transparent 2.6px) 0 50%/16px 12px repeat-x,
+            #120312}
+.gal-row:before{top:0}
+.gal-row:after{bottom:0}
+
 .gal-belt{display:flex;width:max-content;will-change:transform;
  animation:galrun 42s linear infinite}
 .gal-row-b .gal-belt{animation-duration:54s;animation-direction:reverse}
@@ -1246,9 +1261,19 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;font-weight:600;lin
 .gal-track .gal-open:nth-child(odd){width:min(28vw,320px)}
 .gal-track .gal-open:nth-child(3n){width:min(44vw,480px)}
 .gal-open img{display:block;width:100%;height:100%;object-fit:cover}
+.gal-open:after{content:attr(data-place);position:absolute;left:12px;bottom:12px;z-index:1;
+ font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#fff;
+ text-shadow:0 1px 10px rgba(0,0,0,.7)}
 .gal-open:focus-visible{outline:2px solid var(--gold);outline-offset:-2px;z-index:1}
 .gal-row:hover .gal-belt{animation-play-state:paused}
 @keyframes galrun{to{transform:translateX(-50%)}}
+
+.gal-now{display:flex;align-items:baseline;justify-content:center;gap:14px;
+ margin:clamp(18px,2.4vw,28px) 0 0;padding:0}
+.gal-now span{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+ color:rgba(255,255,255,.45)}
+.gal-now b{font-family:'Playfair Display',serif;font-size:clamp(20px,2.2vw,28px);font-weight:600;
+ color:var(--gold);letter-spacing:-.02em}
 
 .gal-lb{position:fixed;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;
  gap:18px;padding:28px;background:rgba(12,2,12,.94)}
@@ -1278,6 +1303,7 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;font-weight:600;lin
   .gal-lb-nav{width:40px;height:40px;font-size:15px}
 }
 @media (max-width:640px){
+  .gal-finder{display:none}
   .gal-lb-nav{display:none}
   .gal-lb-frame img{max-width:94vw}
 }
