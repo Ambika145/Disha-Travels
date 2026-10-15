@@ -1,0 +1,47 @@
+/* Passport Services page only. Loaded after css/services.css. */
+/* ---- PASSPORT · three applications ---- */
+.apps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,1.8vw,24px)}
+.app{position:relative;display:flex;flex-direction:column;padding:clamp(24px,2.4vw,32px);background:var(--paper);
+ border:1px solid #EFE4EA;border-radius:8px;overflow:hidden;transition:transform .45s var(--ease),box-shadow .45s ease,border-color .3s ease}
+.app:hover{transform:translateY(-5px);box-shadow:0 24px 50px rgba(94,26,94,.12);border-color:rgba(169,63,169,.3)}
+/* a passport-cover strip */
+.app:before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--purple-700)}
+.app.urgent:before{background:var(--gold)}
+.app-tag{align-self:flex-start;padding:5px 12px;border-radius:var(--r-pill);background:var(--surface-alt);color:var(--purple-700);
+ font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.app.urgent .app-tag{background:#FFF1C9;color:#7A5300}
+.app h3{font-size:clamp(23px,2vw,28px);color:var(--purple-700);margin:16px 0 8px}
+.app > p{margin:0 0 20px;font-size:14.5px;line-height:1.7;color:#4A4450}
+.app .sk{margin-top:auto;padding-top:16px;border-top:1px dashed #E2D4DE}
+.app ul{list-style:none;margin:10px 0 0;padding:0}
+.app li{position:relative;padding:5px 0 5px 24px;font-size:14px;line-height:1.55;color:#3F3943}
+.app li:before{content:"\F26E";font-family:'bootstrap-icons';position:absolute;left:0;top:5px;color:var(--purple-500)}
+/* ---- PASSPORT · six-month checker ---- */
+.check{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,4vw,64px);align-items:center}
+.check-big{font-family:'Playfair Display',serif;font-size:clamp(84px,11vw,150px);font-weight:600;line-height:.9;color:var(--purple-700);
+ letter-spacing:-.04em;margin:8px 0 16px}
+.check-big small{display:inline-block;margin-left:10px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;
+ letter-spacing:.2em;text-transform:uppercase;color:var(--gold);vertical-align:top;margin-top:.9em}
+.check-form{padding:clamp(22px,2.8vw,36px);background:#fff;border-radius:10px;border:1px solid var(--line);
+ box-shadow:0 26px 60px rgba(94,26,94,.12)}
+.check-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.check-fields label{display:flex;flex-direction:column;gap:7px;font-size:12px;font-weight:600;color:var(--purple-700)}
+.check-fields input{font-family:inherit;font-size:14.5px;padding:13px 14px;border:1px solid var(--line);border-radius:8px;background:#FDFAFC;color:var(--ink);min-width:0}
+.check-fields input:focus{outline:none;border-color:var(--purple-500);box-shadow:0 0 0 4px rgba(142,44,142,.12);background:#fff}
+.check-form .btn{margin-top:18px;display:inline-flex;align-items:center;gap:9px}
+.check-out{margin-top:18px}
+.check-out:empty{display:none}
+.verdict{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-radius:8px;font-size:14.5px;line-height:1.6;
+ animation:s-up .5s var(--ease) both}
+.verdict i{font-size:22px;flex:none}
+.verdict b{display:block;font-size:15.5px;margin-bottom:2px}
+.verdict.ok{background:#E3F4EA;color:#123F28}
+.verdict.ok i{color:var(--ok)}
+.verdict.warn{background:#FCE8E6;color:#5A120D}
+.verdict.warn i{color:var(--no)}
+.verdict.err{background:var(--surface-alt);color:var(--purple-900)}
+.verdict.err i{color:var(--purple-500)}
+@media (max-width:640px){
+  .check-fields{grid-template-columns:minmax(0,1fr)}
+  .check-form .btn{width:100%;justify-content:center}
+}

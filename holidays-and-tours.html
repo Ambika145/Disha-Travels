@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon/icon-192.png">
+<link rel="apple-touch-icon" href="assets/images/favicon/apple-touch-icon.png">
+<meta name="theme-color" content="#5E1A5E">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Holidays &amp; Tours | Holiday Collections | Disha Travel Services</title>
+<meta name="description" content="Pure Veg &amp; Jain Group Tours, honeymoons, family holidays, senior-paced trips, adventure, luxury, cruises, pilgrimages, private group departures and corporate travel — planned by Disha Travel Services, Hyderabad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/holidays.css">
+<link rel="stylesheet" href="css/enquiry.css">
+<link rel="stylesheet" href="css/loader.css">
+<script src="js/loader.js"></script>
+</head>
+<body>
+
+<!-- HEADER (same as the homepage) -->
+<header class="hdr"><div class="wrap">
+  <a class="logo" href="index.html" aria-label="Disha Travel Services, home">
+    <img src="assets/images/brand/disha-logo-nav.png" alt="Disha Travel Services. We take care of your travel &amp; holidays">
+  </a>
+  <nav id="sitenav">
+    <a href="index.html">Home</a>
+    <a href="destinations.html">Destinations</a>
+    <a href="holidays-and-tours.html" class="on" aria-current="page">Holidays &amp; Tours</a>
+    <div class="nav-dd">
+      <a href="services.html">Services <i class="bi bi-chevron-down" aria-hidden="true"></i></a>
+      <div class="nav-dd-menu">
+        <a href="service-visa.html"><i class="bi bi-file-earmark-text" aria-hidden="true"></i>Visa Services</a>
+        <a href="service-passport.html"><i class="bi bi-passport" aria-hidden="true"></i>Passport Services</a>
+        <a href="service-forex.html"><i class="bi bi-cash-stack" aria-hidden="true"></i>Forex Assistance</a>
+        <a href="service-travel-insurance.html"><i class="bi bi-umbrella" aria-hidden="true"></i>Travel Insurance</a>
+        <a href="service-air-tickets.html"><i class="bi bi-airplane" aria-hidden="true"></i>Air Tickets</a>
+        <a href="service-train-tickets.html"><i class="bi bi-train-front" aria-hidden="true"></i>Train Tickets</a>
+        <a href="service-bus-tickets.html"><i class="bi bi-bus-front" aria-hidden="true"></i>Bus Tickets</a>
+        <a href="services.html" class="nav-dd-all">View all services <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <a href="about-us.html">About Us</a>
+    <a href="contact-us.html">Contact Us</a>
+  </nav>
+  <button class="navtoggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sitenav"><i class="bi bi-list"></i></button>
+  <a class="btn btn-purple" href="contact-us.html#enquiry" data-enquiry>Enquire Now</a>
+</div></header>
+
+<main class="hpage">
+
+<!-- 1 HERO: full-bleed photography that moves between the three traveller
+     types; the same type and buttons as the homepage hero. -->
+<section class="hhb" aria-labelledby="hol-h1">
+  <div class="hhb-media" aria-hidden="true">
+    <figure class="hhb-slide is-on"><img src="assets/images/destinations/maldives.jpg" alt="" style="object-position:50% 55%" fetchpriority="high"></figure>
+    <figure class="hhb-slide"><img src="assets/images/destinations/vietnam.jpg" alt="" style="object-position:50% 50%" loading="lazy"></figure>
+    <figure class="hhb-slide"><img src="assets/images/destinations/dubai-burj-khalifa.jpg" alt="" style="object-position:50% 62%" loading="lazy"></figure>
+  </div>
+  <div class="hhb-scrim" aria-hidden="true"></div>
+
+  <div class="wrap hhb-main">
+    <div class="hhb-copy">
+      <span class="hkicker"><b>Holidays &amp; Tours</b></span>
+      <h1 id="hol-h1">Every kind of traveller.<br><em>Every kind of trip.</em></h1>
+      <p class="hhb-sub">Whether it’s two of you or twenty, there’s a collection built for the way you travel.</p>
+      <div class="hcta">
+        <a class="btn btn-primary" href="#collections">Explore the Collections <i class="bi bi-arrow-down"></i></a>
+        <!-- TODO: switch to the enquiry popup once it exists -->
+        <a class="btn btn-ghost" href="#custom">Plan Something Custom</a>
+      </div>
+    </div>
+
+    <div class="hhb-picks" role="group" aria-label="Collections by traveller">
+        <button type="button" class="hhb-pick is-on" data-i="0" aria-pressed="true">
+          <span class="hhb-thumb"><img src="assets/images/destinations/maldives.jpg" alt="" loading="lazy" style="object-position:50% 55%"></span>
+          <span class="hhb-tx"><b>Couples</b><small>Maldives</small></span>
+          <span class="hhb-run"><i></i></span>
+        </button>
+        <button type="button" class="hhb-pick" data-i="1" aria-pressed="false">
+          <span class="hhb-thumb"><img src="assets/images/destinations/vietnam.jpg" alt="" loading="lazy" style="object-position:50% 50%"></span>
+          <span class="hhb-tx"><b>Pure Veg Groups</b><small>Vietnam</small></span>
+          <span class="hhb-run"><i></i></span>
+        </button>
+        <button type="button" class="hhb-pick" data-i="2" aria-pressed="false">
+          <span class="hhb-thumb"><img src="assets/images/destinations/dubai-burj-khalifa.jpg" alt="" loading="lazy" style="object-position:50% 62%"></span>
+          <span class="hhb-tx"><b>Families</b><small>Dubai</small></span>
+          <span class="hhb-run"><i></i></span>
+        </button>
+    </div>
+  </div>
+</section>
+
+<!-- 2 SIGNATURE: PURE VEG GROUP TOURS -->
+<section class="sec hv2" id="pure-veg" aria-labelledby="veg-h">
+  <div class="wrap hv2-grid">
+    <figure class="hv2-pic hrv">
+      <img src="assets/images/collections/vegetarian.jpg" alt="A spread of vegetarian Indian dishes" loading="lazy">
+      <span class="hv2-tag">100% vegetarian group meals</span>
+    </figure>
+
+    <div class="hv2-tx hrv">
+      <div class="eyebrow">Our Signature</div>
+      <h2 id="veg-h">Pure Veg &amp; Jain Group Tours. <em>Every meal sorted.</em></h2>
+      <p class="hv2-body">Fixed departures across India, South East Asia, Dubai and Europe where every group meal is vegetarian, from the first hotel breakfast to the last airport meal. Jain meals are arranged on advance request.</p>
+
+      <!-- Client to confirm: "A day on a Pure Veg tour" matches practice -->
+      <h3 class="hv2-h3">A day on a Pure Veg tour</h3>
+      <ol class="hv2-day">
+        <li><span>Morning</span><b>Breakfast, already briefed</b><p>The hotel kitchen has our vegetarian and Jain brief in writing before the group arrives.</p></li>
+        <li><span>Midday</span><b>Lunch, booked on the route</b><p>A table reserved at a vegetarian restaurant on the way, so no one is hunting for food at 2pm.</p></li>
+        <li><span>Evening</span><b>Dinner, local or Indian</b><p>A local vegetarian meal one night, Indian the next, so nobody eats the same dal for twelve days.</p></li>
+      </ol>
+
+      <!-- TODO: point at the departures list once it exists -->
+      <a class="btn btn-purple hv2-cta" href="contact-us.html?dest=Pure%20Veg%20%26%20Jain%20Group%20Tour#enquiry">See Departures <i class="bi bi-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- 3 WHO'S COMING ALONG? -->
+<section class="sec hcol" id="collections" aria-labelledby="col-h">
+  <div class="wrap">
+    <div class="hc-head">
+      <div>
+        <div class="eyebrow">The Collections</div>
+        <h2 id="col-h">Who’s coming along?</h2>
+      </div>
+    </div>
+
+    <!-- Which collections each choice highlights is a UI mapping, for the client to review. -->
+    <ul class="hc-who" aria-label="Who is travelling">
+      <li class="hc-ink" aria-hidden="true"></li>
+      <li><button type="button" class="tag-btn" data-who="all" aria-pressed="true"><span>Everyone</span></button></li>
+      <li><button type="button" class="tag-btn" data-who="two" aria-pressed="false"><span>Couples</span></button></li>
+      <li><button type="button" class="tag-btn" data-who="kids" aria-pressed="false"><span>Family</span></button></li>
+      <li><button type="button" class="tag-btn" data-who="elders" aria-pressed="false"><span>Senior citizens</span></button></li>
+      <li><button type="button" class="tag-btn" data-who="friends" aria-pressed="false"><span>Friends</span></button></li>
+      <li><button type="button" class="tag-btn" data-who="solo" aria-pressed="false"><span>Solo</span></button></li>
+    </ul>
+    <p class="hc-status" aria-live="polite"></p>
+
+    <!-- TODO: each card should link to its collection page once those exist (client to confirm which). -->
+    <div class="hc-grid">
+
+      <article class="hc hc-tile hrv" id="c-honeymoon" data-who="two">
+          <a class="hc-link" href="contact-us.html?dest=Honeymoon%20%26%20Couple#enquiry">
+            <figure class="hc-pic"><img src="assets/images/collections/couple.jpg" alt="A couple on a jetty at a resort" loading="lazy"></figure>
+            <h3>Honeymoon &amp; Couple</h3>
+          </a>
+        </article>
+
+      <article class="hc hc-tile hrv" id="c-family" data-who="kids">
+          <a class="hc-link" href="contact-us.html?dest=Family%20holiday#enquiry">
+            <figure class="hc-pic"><img src="assets/images/collections/family.jpg" alt="A family on a beach" loading="lazy"></figure>
+            <h3>Family</h3>
+          </a>
+        </article>
+
+      <article class="hc hc-tile hrv" id="c-senior" data-who="elders">
+          <a class="hc-link" href="contact-us.html?dest=Senior%20Citizens%E2%80%99%20holiday#enquiry">
+            <figure class="hc-pic"><img src="assets/images/destinations/sri-lanka-ella-train.jpg" alt="A train crossing the Nine Arches Bridge in Sri Lanka" loading="lazy"></figure>
+            <h3>Senior Citizens’</h3>
+          </a>
+        </article>
+
+      <article class="hc hc-tile hrv" id="c-adventure" data-who="two friends solo">
+          <a class="hc-link" href="contact-us.html?dest=Adventure#enquiry">
+            <figure class="hc-pic"><img src="assets/images/collections/adventure.jpg" alt="Elephant trekking through a jungle river" loading="lazy"></figure>
+            <h3>Adventure</h3>
+          </a>
+        </article>
+
+      <article class="hc hc-tile hrv" id="c-luxury" data-who="two kids solo">
+          <a class="hc-link" href="contact-us.html?dest=Luxury%20holiday#enquiry">
+            <figure class="hc-pic"><img src="assets/images/destinations/switzerland-lauterbrunnen.jpg" alt="A village church and waterfall in the Swiss Alps" loading="lazy"></figure>
+            <h3>Luxury</h3>
+          </a>
+        </article>
+
+      <article class="hc hc-tile hrv" id="c-cruise" data-who="two kids elders friends solo">
+          <a class="hc-link" href="contact-us.html?dest=Cruise#enquiry">
+            <figure class="hc-pic"><img src="assets/images/collections/cruise.jpg" alt="A cruise ship off a green coastline" loading="lazy"></figure>
+            <h3>Cruise</h3>
+          </a>
+        </article>
+
+      <article class="hc hc-tile hrv" id="c-spiritual" data-who="elders group solo">
+          <a class="hc-link" href="contact-us.html?dest=Spiritual%20%26%20Pilgrimage#enquiry">
+            <figure class="hc-pic"><img src="assets/images/destinations/uttarakhand-kedarnath.jpg" alt="Kedarnath temple below snow-covered Himalayan peaks" loading="lazy" style="object-position:50% 70%"></figure>
+            <h3>Spiritual &amp; Pilgrimage</h3>
+          </a>
+        </article>
+
+      <article class="hc hc-tile hrv" id="c-private" data-who="kids elders friends group">
+          <a class="hc-link" href="contact-us.html?dest=Private%20Group%20Departure#enquiry">
+            <figure class="hc-pic"><img src="assets/images/destinations/vietnam.jpg" alt="The Golden Bridge at Ba Na Hills, Vietnam" loading="lazy"></figure>
+            <h3>Private Group Departures</h3>
+          </a>
+        </article>
+
+      <article class="hc hc-tile hrv" id="c-corporate" data-who="group company">
+          <a class="hc-link" href="contact-us.html?dest=Corporate%20%26%20Institutional#enquiry">
+            <figure class="hc-pic"><img src="assets/images/destinations/thailand.jpg" alt="A long-tail boat at Railay Beach, Thailand" loading="lazy"></figure>
+            <h3>Corporate &amp; Institutional</h3>
+          </a>
+        </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- 4 PLAN AROUND THE HOLIDAYS YOU ALREADY HAVE -->
+<section class="sec hwin" id="when" aria-labelledby="win-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Your Calendar</div>
+      <h2 id="win-h">Plan around the holidays you already have.</h2>
+    </div>
+
+    <div class="bp-grid">
+      <article class="bp hrv">
+        <div class="bp-main">
+          
+          <h3>Summer holidays</h3>
+          <p class="bp-txt">Schools are out. Europe has its longest days, and the mountains are cool.</p>
+          <p class="bp-route"><a href="destinations.html#d-europe">Europe</a><i class="sep" aria-hidden="true">·</i><a href="destinations.html#d-switzerland">Switzerland</a><i class="sep" aria-hidden="true">·</i><a href="destinations.html#d-kashmir">Kashmir</a><i class="sep" aria-hidden="true">·</i><a href="destinations.html#d-ladakh">Ladakh</a></p>
+        </div>
+        <div class="bp-stub" aria-hidden="true"><div class="bp-when"><b>APR<small>to</small>JUN</b></div><span class="bp-code"></span></div>
+      </article>
+
+      <article class="bp hrv">
+        <div class="bp-main">
+          
+          <h3>Dussehra &amp; Diwali break</h3>
+          <p class="bp-txt">A week off, and the start of the best season in South East Asia and the Gulf.</p>
+          <p class="bp-route"><a href="destinations.html#d-dubai">Dubai</a><i class="sep" aria-hidden="true">·</i><a href="destinations.html#d-vietnam">Vietnam</a><i class="sep" aria-hidden="true">·</i><a href="destinations.html#d-thailand">Thailand</a><i class="sep" aria-hidden="true">·</i><a href="destinations.html#d-rajasthan">Rajasthan</a></p>
+        </div>
+        <div class="bp-stub" aria-hidden="true"><div class="bp-when"><b>OCT<small>to</small>NOV</b></div><span class="bp-code"></span></div>
+      </article>
+
+      <article class="bp hrv">
+        <div class="bp-main">
+          
+          <h3>Wedding-season honeymoons</h3>
+          <p class="bp-txt">Book as soon as the wedding date is fixed. The best villas go first.</p>
+          <p class="bp-route"><a href="destinations.html#d-maldives">Maldives</a><i class="sep" aria-hidden="true">·</i><a href="destinations.html#d-sri-lanka">Sri Lanka</a><i class="sep" aria-hidden="true">·</i><a href="destinations.html#d-mauritius">Mauritius</a><i class="sep" aria-hidden="true">·</i><a href="destinations.html#d-kerala">Kerala</a></p>
+        </div>
+        <div class="bp-stub" aria-hidden="true"><div class="bp-when"><b>NOV<small>to</small>FEB</b></div><span class="bp-code"></span></div>
+      </article>
+
+      <article class="bp hrv">
+        <div class="bp-main">
+          
+          <h3>Christmas &amp; New Year</h3>
+          <p class="bp-txt">Winter markets, the northern lights, or sunshine somewhere warm.</p>
+          <p class="bp-route"><a href="destinations.html#d-europe">Europe</a><i class="sep" aria-hidden="true">·</i><a href="destinations.html#d-finland">Finland</a><i class="sep" aria-hidden="true">·</i><a href="destinations.html#d-dubai">Dubai</a><i class="sep" aria-hidden="true">·</i><a href="destinations.html#d-goa">Goa</a></p>
+        </div>
+        <div class="bp-stub" aria-hidden="true"><div class="bp-when"><b>DEC<small>to</small>JAN</b></div><span class="bp-code"></span></div>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<!-- 5 CUSTOM TRIP -->
+<section class="sec hcustom" id="custom" aria-labelledby="custom-h">
+  <div class="wrap">
+    <div class="hx hrv">
+      <div>
+        <div class="eyebrow">Made to Measure</div>
+        <h2 id="custom-h">Doesn’t fit a collection? <em>Tell us four things.</em></h2>
+        <p class="hx-line">Share these with us, and one of our travel experts will get back to you within a day.</p>
+        <div class="hx-cta">
+          <!-- TODO: switch to the enquiry popup once it exists -->
+          <a class="btn btn-primary" href="contact-us.html?dest=Custom%20holiday#enquiry">Plan My Custom Holiday <i class="bi bi-arrow-right"></i></a>
+          <!-- TODO: WhatsApp number pending client confirmation -->
+          <a class="btn btn-ghost" href="https://wa.me/918008555000" target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i>WhatsApp Us</a>
+        </div>
+      </div>
+      <ol class="hx-form" aria-label="The four things to tell us">
+        <li><em>01</em><b>Where you’d like to go (or “not sure yet”)</b><span aria-hidden="true"></span></li>
+        <li><em>02</em><b>Which month, and how many nights</b><span aria-hidden="true"></span></li>
+        <li><em>03</em><b>Who’s travelling</b><span aria-hidden="true"></span></li>
+        <li><em>04</em><b>Roughly what you’d like to spend</b><span aria-hidden="true"></span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER (same as the homepage) -->
+<footer>
+  <div class="wrap">
+
+    <div class="fgrid">
+      <div class="fbrand">
+        <div class="lg"><img src="assets/images/brand/disha-logo-nav.png" alt="Disha Travel Services"></div>
+        <p>Your trusted travel partner since 2011. Holidays, tickets and paperwork, handled by the same people who planned your trip.</p>
+        <div class="soc">
+          <a href="#" aria-label="Disha Travel Services on Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Disha Travel Services on Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="Disha Travel Services on LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" aria-label="Disha Travel Services on YouTube"><i class="bi bi-youtube"></i></a>
+          <a href="#" aria-label="Chat with us on WhatsApp"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+      <nav class="fcol" aria-label="Menu options">
+        <h4>Menu Options</h4>
+        <a href="index.html">Home</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="holidays-and-tours.html">Holidays &amp; Tours</a>
+        <a href="services.html">Travel Services</a>
+        <a href="about-us.html">About Us</a>
+        <a href="contact-us.html">Contact Us</a>
+      </nav>
+      <nav class="fcol" aria-label="Good to know">
+        <h4>Good to Know</h4>
+        <a href="#">Booking Terms</a>
+        <a href="#">Cancellation &amp; Refund Policy</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Payment Options</a>
+        <a href="contact-us.html#faq">FAQs</a>
+        <a href="#">Sitemap</a>
+      </nav>
+      <nav class="fcol" aria-label="Destinations">
+        <h4>Destinations</h4>
+        <a href="#">Bali · Dubai · Paris</a>
+        <a href="#">Maldives · Switzerland</a>
+        <a href="#">Thailand · Vietnam</a>
+        <a href="#">Kerala · Kashmir</a>
+        <a href="#">Ladakh · Rajasthan</a>
+        <a href="#">Andaman</a>
+      </nav>
+    </div>
+
+    <div class="fcontact">
+      <div class="fitem">
+        <i class="bi bi-geo-alt"></i>
+        <div>
+          <h5>Visit us</h5>
+          <p>#1-1-379/2 &amp; A, SRT 10, St. No. 6,<br>Near Andhra Cafe, Opp. Axis Bank,<br>Jawahar Nagar, Hyderabad 500020, Telangana</p>
+        </div>
+      </div>
+      <div class="fitem">
+        <i class="bi bi-telephone"></i>
+        <div>
+          <h5>Call us</h5>
+          <p><a href="tel:+918008555000">+91 80085 55000</a><br>
+             <a href="tel:+918125666000">+91 81256 66000</a></p>
+        </div>
+      </div>
+      <div class="fitem">
+        <i class="bi bi-envelope"></i>
+        <div>
+          <h5>Write to us</h5>
+          <p><a href="mailto:info@dishats.com">info@dishats.com</a><br>
+             <a href="https://www.dishats.com">www.dishats.com</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="fbot">
+      <div>© 2026 Disha Travel Services. All rights reserved.</div>
+      <div class="flegal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Booking Terms</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script src="js/enquiry.js"></script>
+<script src="js/main.js"></script>
+<script src="js/holidays.js"></script>
+</body>
+</html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon/icon-192.png">
+<link rel="apple-touch-icon" href="assets/images/favicon/apple-touch-icon.png">
+<meta name="theme-color" content="#5E1A5E">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact Us | Disha Travel Services, Jawahar Nagar, Hyderabad</title>
+<meta name="description" content="Call, WhatsApp, email or visit Disha Travel Services in Jawahar Nagar, Hyderabad. Tell us what you need and our team will get back to you within a day.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/loader.css">
+<script src="js/loader.js"></script>
+</head>
+<body>
+
+<!-- HEADER (same as the homepage) -->
+<header class="hdr"><div class="wrap">
+  <a class="logo" href="index.html" aria-label="Disha Travel Services, home">
+    <img src="assets/images/brand/disha-logo-nav.png" alt="Disha Travel Services. We take care of your travel &amp; holidays">
+  </a>
+  <nav id="sitenav">
+    <a href="index.html">Home</a>
+    <a href="destinations.html">Destinations</a>
+    <a href="holidays-and-tours.html">Holidays &amp; Tours</a>
+    <div class="nav-dd">
+      <a href="services.html">Services <i class="bi bi-chevron-down" aria-hidden="true"></i></a>
+      <div class="nav-dd-menu">
+        <a href="service-visa.html"><i class="bi bi-file-earmark-text" aria-hidden="true"></i>Visa Services</a>
+        <a href="service-passport.html"><i class="bi bi-passport" aria-hidden="true"></i>Passport Services</a>
+        <a href="service-forex.html"><i class="bi bi-cash-stack" aria-hidden="true"></i>Forex Assistance</a>
+        <a href="service-travel-insurance.html"><i class="bi bi-umbrella" aria-hidden="true"></i>Travel Insurance</a>
+        <a href="service-air-tickets.html"><i class="bi bi-airplane" aria-hidden="true"></i>Air Tickets</a>
+        <a href="service-train-tickets.html"><i class="bi bi-train-front" aria-hidden="true"></i>Train Tickets</a>
+        <a href="service-bus-tickets.html"><i class="bi bi-bus-front" aria-hidden="true"></i>Bus Tickets</a>
+        <a href="services.html" class="nav-dd-all">View all services <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <a href="about-us.html">About Us</a>
+    <a href="contact-us.html" class="on" aria-current="page">Contact Us</a>
+  </nav>
+  <button class="navtoggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sitenav"><i class="bi bi-list"></i></button>
+  <a class="btn btn-purple" href="#enquiry">Enquire Now</a>
+</div></header>
+
+<main>
+
+<!-- 1 HERO -->
+<section class="phero has-overlap" aria-labelledby="contact-h1">
+  <div class="hbg"><img src="assets/images/destinations/sri-lanka-ella-train.jpg" alt="" fetchpriority="high"></div>
+  <div class="wrap phero-grid">
+    <div class="phero-copy">
+      <h1 id="contact-h1">We’re just<br><em>a call away.</em></h1>
+      <p class="phero-lead">Whether it’s a quick question or a full trip plan, you’ll hear back from our team within a day.</p>
+    </div>
+
+    <!-- Flight route: a dashed path draws out from the pin while the
+         aircraft flies it, holds, fades and repeats. Pure SVG (SMIL); every
+         animation shares one 7s clock so they stay in step. -->
+    <div class="croute" aria-hidden="true">
+      <svg class="croute-svg" viewBox="0 0 520 360" focusable="false">
+        <defs>
+          <path id="crPath" d="M60 300 C170 300 258 284 298 218 C330 166 318 96 278 96 C238 96 230 160 262 196 C302 242 384 206 468 82"/>
+          <mask id="crReveal" maskUnits="userSpaceOnUse" x="0" y="0" width="520" height="360">
+            <path d="M60 300 C170 300 258 284 298 218 C330 166 318 96 278 96 C238 96 230 160 262 196 C302 242 384 206 468 82" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1">
+              <animate attributeName="stroke-dashoffset" values="1;0;0" keyTimes="0;.62;1" calcMode="spline" keySplines=".45 0 .25 1;0 0 1 1" dur="7s" repeatCount="indefinite"/>
+            </path>
+          </mask>
+          <linearGradient id="crF" x1="0" x2="1"><stop offset="0" stop-color="#AEB5BF"/><stop offset=".42" stop-color="#fff"/><stop offset=".7" stop-color="#E6E9ED"/><stop offset="1" stop-color="#9DA5B0"/></linearGradient>
+          <linearGradient id="crW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F4F6F8"/><stop offset="1" stop-color="#BEC4CC"/></linearGradient>
+        </defs>
+
+        <!-- the whole route, faint, so the journey ahead is legible -->
+        <use href="#crPath" class="cr-ghost"/>
+        <!-- the travelled route, revealed behind the aircraft -->
+        <g mask="url(#crReveal)">
+          <use href="#crPath" class="cr-line"/>
+          <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;.84;.94;1" dur="7s" repeatCount="indefinite"/>
+        </g>
+
+        <!-- origin pin -->
+        <g class="cr-pin" transform="translate(60 300)">
+          <ellipse class="cr-ripple" rx="7" ry="2.6" cy="1"/>
+          <ellipse rx="5" ry="1.8" cy="1" fill="rgba(0,0,0,.35)"/>
+          <path d="M0 0 C-3 -7 -11 -12 -11 -21 A11 11 0 1 1 11 -21 C11 -12 3 -7 0 0 Z" fill="#FDB913"/>
+          <circle cy="-21" r="4.2" fill="#2A0A2A"/>
+        </g>
+        <text class="cr-label" x="42" y="332">Your enquiry</text>
+        <text class="cr-label" x="478" y="40" text-anchor="end">Your journey</text>
+
+        <!-- the aircraft: nose along +x so rotate=auto aligns it with the path -->
+        <g class="cr-plane" opacity="0">
+          <g transform="rotate(90) scale(.42) translate(-50 -50)">
+            <path d="M45.6 40 L7 60.5 Q5.6 61.6 6.4 63.2 L45.6 54.5 Z" fill="url(#crW)"/>
+            <path d="M54.4 40 L93 60.5 Q94.4 61.6 93.6 63.2 L54.4 54.5 Z" fill="url(#crW)"/>
+            <rect x="25.2" y="42.5" width="6.2" height="13" rx="3" fill="#A3AAB4"/>
+            <rect x="68.6" y="42.5" width="6.2" height="13" rx="3" fill="#A3AAB4"/>
+            <path d="M46.6 81 L30.5 90.6 Q29.8 91.6 30.6 92.4 L46.6 88.4 Z" fill="url(#crW)"/>
+            <path d="M53.4 81 L69.5 90.6 Q70.2 91.6 69.4 92.4 L53.4 88.4 Z" fill="url(#crW)"/>
+            <path d="M50 3 C53.6 3 54.6 9.5 54.6 16 L54.6 78 C54.6 85 52.8 93 50 97 C47.2 93 45.4 85 45.4 78 L45.4 16 C45.4 9.5 46.4 3 50 3 Z" fill="url(#crF)"/>
+            <path d="M47.6 10.4 Q50 8.4 52.4 10.4 L52 12.6 Q50 11.6 48 12.6 Z" fill="#253041"/>
+            <rect x="49.35" y="79" width="1.3" height="15" rx=".6" fill="#FDB913"/>
+          </g>
+          <animateMotion dur="7s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;.62;1" calcMode="spline" keySplines=".45 0 .25 1;0 0 1 1"><mpath href="#crPath"/></animateMotion>
+          <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;.05;.84;.94;1" dur="7s" repeatCount="indefinite"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 2 WAYS TO REACH US (cards overlap the hero) -->
+<section class="creach-sec" aria-labelledby="reach-h">
+  <div class="wrap">
+    <h2 class="sr-only" id="reach-h">Ways to reach us</h2>
+    <ul class="creach">
+      <li class="rcard rv">
+        <h3>Call us</h3>
+        <div class="rdet"><a href="tel:+918008555000">+91 80085 55000</a><br><a href="tel:+918125666000">+91 81256 66000</a></div>
+        <p class="rbest"><b>Best for</b>Quick questions and last-minute changes</p>
+        <a class="tlink" href="tel:+918008555000">Call now <i class="bi bi-arrow-right"></i></a>
+      </li>
+      <li class="rcard wa rv" data-d="1">
+        <h3>Message us</h3>
+        <!-- TODO: WhatsApp number pending client confirmation; update the text and both wa.me links -->
+        <div class="rdet">WhatsApp our team</div>
+        <p class="rbest"><b>Best for</b>Sending documents, photos and screenshots</p>
+        <a class="tlink" href="https://wa.me/918008555000" target="_blank" rel="noopener">Open WhatsApp <i class="bi bi-arrow-right"></i></a>
+      </li>
+      <li class="rcard rv" data-d="2">
+        <h3>Write to us</h3>
+        <div class="rdet"><a href="mailto:info@dishats.com">info@dishats.com</a></div>
+        <p class="rbest"><b>Best for</b>Detailed plans and longer questions</p>
+        <a class="tlink" href="mailto:info@dishats.com">Send an email <i class="bi bi-arrow-right"></i></a>
+      </li>
+      <li class="rcard rv" data-d="3">
+        <h3>Come in</h3>
+        <div class="rdet">Jawahar Nagar, Hyderabad</div>
+        <p class="rbest"><b>Best for</b>Going through visa and passport documents together</p>
+        <a class="tlink" href="#visit">Find the office <i class="bi bi-arrow-right"></i></a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 3 ENQUIRY FORM -->
+<section class="sec cform-sec" id="enquiry" aria-labelledby="form-h">
+  <div class="wrap cform-grid">
+    <div class="cform-side">
+      <div class="eyebrow">Enquire</div>
+      <h2 id="form-h">Tell us what you need.</h2>
+      <p>Pick the form that fits. Here’s what happens once you send it.</p>
+      <ol class="nsteps">
+        <li class="nstep"><span class="nstep-n" aria-hidden="true">1</span><div><b>A person reads it</b><span>Every enquiry is read by our team, not sorted by a machine.</span></div></li>
+        <li class="nstep"><span class="nstep-n" aria-hidden="true">2</span><div><b>We call you within a day</b><span>To understand the details before we suggest anything.</span></div></li>
+        <li class="nstep"><span class="nstep-n" aria-hidden="true">3</span><div><b>You get options in writing</b><span>With what’s included and what isn’t. No payment until you decide.</span></div></li>
+      </ol>
+    </div>
+
+    <div class="fcard" id="fcard">
+      <div class="ftabs" role="tablist" aria-label="Type of enquiry">
+        <button class="ftab" type="button" role="tab" id="tab-trip" aria-controls="panel-trip" aria-selected="true">Plan a trip</button>
+        <button class="ftab" type="button" role="tab" id="tab-visa" aria-controls="panel-visa" aria-selected="false" tabindex="-1">Visa &amp; tickets</button>
+        <button class="ftab" type="button" role="tab" id="tab-group" aria-controls="panel-group" aria-selected="false" tabindex="-1">Group booking</button>
+      </div>
+
+      <!-- TODO: wire each form to the enquiry endpoint (js/pages.js only validates for now) -->
+
+      <!-- Tab 1 · Plan a trip -->
+      <form class="fpanel" id="panel-trip" role="tabpanel" aria-labelledby="tab-trip" novalidate>
+        <div class="fgrid2">
+          <div class="ffield"><label for="t-name">Name<sup>*</sup></label><input id="t-name" name="name" autocomplete="name" required placeholder="Your full name"><span class="ferr"></span></div>
+          <div class="ffield"><label for="t-mob">Mobile / WhatsApp<sup>*</sup></label><input id="t-mob" name="mobile" type="tel" autocomplete="tel" required placeholder="+91"><span class="ferr"></span></div>
+          <div class="ffield"><label for="t-email">Email</label><input id="t-email" name="email" type="email" autocomplete="email" placeholder="you@example.com"><span class="ferr"></span></div>
+          <div class="ffield"><label for="t-dest">Where would you like to go?</label><input id="t-dest" name="destination" placeholder="e.g. Bali, Dubai, Kashmir"></div>
+          <div class="ffield"><label for="t-month">Travel month</label><input id="t-month" name="month" type="month"></div>
+          <div class="ffield"><label for="t-pax">Travellers</label><input id="t-pax" name="travellers" type="number" min="1" inputmode="numeric" placeholder="How many?"></div>
+          <div class="ffield">
+            <label for="t-budget">Rough budget per person</label>
+            <!-- TODO: budget bands pending client confirmation -->
+            <select id="t-budget" name="budget">
+              <option value="">Select a range</option>
+              <option>Under ₹50,000</option>
+              <option>₹50,000 – ₹1,00,000</option>
+              <option>₹1,00,000 – ₹2,00,000</option>
+              <option>Above ₹2,00,000</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="ffield">
+            <label for="t-type">Trip type</label>
+            <select id="t-type" name="trip_type">
+              <option value="">Select a trip type</option>
+              <option>Family holiday</option>
+              <option>Honeymoon / couple</option>
+              <option>Pure Veg &amp; Jain Group Tour</option>
+              <option>Adventure</option>
+              <option>Cruise</option>
+              <option>Solo / friends</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="ffield full"><label for="t-notes">Anything we should know?</label><textarea id="t-notes" name="notes" placeholder="Dietary needs, elders travelling, dates that are fixed…"></textarea></div>
+        </div>
+        <div class="fsubmit">
+          <button class="btn btn-purple" type="submit">Send Message <i class="bi bi-send"></i></button>
+          <p><i class="bi bi-shield-check"></i>No payment required. One of our travel experts will get back to you within a day.</p>
+        </div>
+      </form>
+
+      <!-- Tab 2 · Visa & tickets -->
+      <form class="fpanel" id="panel-visa" role="tabpanel" aria-labelledby="tab-visa" novalidate hidden>
+        <div class="fgrid2">
+          <div class="ffield"><label for="v-name">Name<sup>*</sup></label><input id="v-name" name="name" autocomplete="name" required placeholder="Your full name"><span class="ferr"></span></div>
+          <div class="ffield"><label for="v-mob">Mobile<sup>*</sup></label><input id="v-mob" name="mobile" type="tel" autocomplete="tel" required placeholder="+91"><span class="ferr"></span></div>
+          <div class="ffield"><label for="v-email">Email</label><input id="v-email" name="email" type="email" autocomplete="email" placeholder="you@example.com"><span class="ferr"></span></div>
+          <div class="ffield">
+            <label for="v-svc">Which service?</label>
+            <select id="v-svc" name="service">
+              <option value="">Select a service</option>
+              <option>Visa assistance</option>
+              <option>Passport</option>
+              <option>Forex assistance</option>
+              <option>Travel insurance</option>
+              <option>Air ticketing</option>
+              <option>Train tickets</option>
+              <option>Bus tickets</option>
+            </select>
+          </div>
+          <div class="ffield"><label for="v-route">Country / route</label><input id="v-route" name="route" placeholder="e.g. Schengen, HYD → DXB"></div>
+          <div class="ffield"><label for="v-when">When do you travel?</label><input id="v-when" name="travel_date" type="date"></div>
+          <div class="ffield full"><label for="v-case">Tell us about your case</label><textarea id="v-case" name="details" placeholder="Number of applicants, passport validity, anything urgent…"></textarea></div>
+        </div>
+        <div class="fsubmit">
+          <button class="btn btn-purple" type="submit">Send Message <i class="bi bi-send"></i></button>
+          <p><i class="bi bi-shield-check"></i>No payment required. One of our travel experts will get back to you within a day.</p>
+        </div>
+      </form>
+
+      <!-- Tab 3 · Group booking -->
+      <form class="fpanel" id="panel-group" role="tabpanel" aria-labelledby="tab-group" novalidate hidden>
+        <div class="fgrid2">
+          <div class="ffield"><label for="g-name">Name<sup>*</sup></label><input id="g-name" name="name" autocomplete="name" required placeholder="Your full name"><span class="ferr"></span></div>
+          <div class="ffield"><label for="g-mob">Mobile<sup>*</sup></label><input id="g-mob" name="mobile" type="tel" autocomplete="tel" required placeholder="+91"><span class="ferr"></span></div>
+          <div class="ffield"><label for="g-org">Group or company name</label><input id="g-org" name="group_name" autocomplete="organization" placeholder="Optional"></div>
+          <div class="ffield"><label for="g-size">Group size</label><input id="g-size" name="group_size" type="number" min="2" inputmode="numeric" placeholder="Approximate number"></div>
+          <div class="ffield"><label for="g-dest">Destination</label><input id="g-dest" name="destination" placeholder="Where to?"></div>
+          <div class="ffield"><label for="g-month">Travel month</label><input id="g-month" name="month" type="month"></div>
+          <div class="ffield full">
+            <label for="g-kind">Kind of group</label>
+            <select id="g-kind" name="group_kind">
+              <option value="">Select a group type</option>
+              <option>Family &amp; relatives</option>
+              <option>Community group</option>
+              <option>Company / corporate trip</option>
+              <option>Friends</option>
+              <option>School / college</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="ffield full"><label for="g-incl">What should the trip include?</label><textarea id="g-incl" name="includes" placeholder="Pure veg meals, sightseeing, conference space…"></textarea></div>
+        </div>
+        <div class="fsubmit">
+          <button class="btn btn-purple" type="submit">Send Message <i class="bi bi-send"></i></button>
+          <p><i class="bi bi-shield-check"></i>No payment required. One of our travel experts will get back to you within a day.</p>
+        </div>
+      </form>
+
+      <div class="fdone" role="status" aria-live="polite" hidden>
+        <i class="bi bi-check-lg" aria-hidden="true"></i>
+        <h3>Thank you, <span class="fdone-name">there</span>.</h3>
+        <p>One of our travel experts will get back to you within a day.</p>
+        <button class="btn btn-outline" type="button" data-again>Send another enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 VISIT OUR OFFICE -->
+<section class="sec office" id="visit" aria-labelledby="visit-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Visit Our Office</div>
+      <h2 id="visit-h">Find us in Jawahar Nagar.</h2>
+    </div>
+
+    <div class="ogrid">
+      <div class="ocard rv">
+        <div class="orow">
+          <div>
+            <h3>Address</h3>
+            <p>#1-1-379/2 &amp; A, SRT 10, St. No. 6,<br>Jawahar Nagar, Hyderabad 500020, Telangana</p>
+            <div class="olm"><span>Near Andhra Cafe</span><span>Opposite Axis Bank</span></div>
+          </div>
+        </div>
+        <div class="orow">
+          <div>
+            <h3>Office hours</h3>
+            <!-- TODO: office hours pending client confirmation -->
+            <p>Monday to Saturday</p>
+          </div>
+        </div>
+        <div class="otip"><span>Coming in for a visa or passport? Call ahead, and we’ll have your checklist ready when you arrive.</span></div>
+        <a class="btn btn-purple" href="https://www.google.com/maps/dir/?api=1&amp;destination=Disha+Travel+Services+Jawahar+Nagar+Hyderabad+500020" target="_blank" rel="noopener">Get Directions <i class="bi bi-arrow-up-right"></i></a>
+      </div>
+
+      <div class="omap rv" data-d="1">
+        <iframe title="Map showing the Disha Travel Services office in Jawahar Nagar, Hyderabad" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Jawahar+Nagar,+Hyderabad,+Telangana+500020&amp;z=15&amp;output=embed"></iframe>
+        <div class="omap-pin"><i class="bi bi-geo-alt-fill"></i><div><b>Disha Travel Services</b><span>Near Andhra Cafe · Opp. Axis Bank</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 QUICK ANSWERS -->
+<section class="sec faq" id="faq" aria-labelledby="faq-h">
+  <div class="wrap faq-grid">
+    <div class="faq-side">
+      <div class="eyebrow">Quick Answers</div>
+      <h2 id="faq-h">Before you ask.</h2>
+      <p>The four things people most often want to know before they get in touch.</p>
+      <a class="tlink" href="#enquiry">Ask us something else <i class="bi bi-arrow-right"></i></a>
+    </div>
+
+    <div class="qlist">
+      <details class="qitem rv" open>
+        <summary><em>01</em>Do I have to pay anything to enquire?</summary>
+        <p>No. An enquiry is free and doesn’t commit you to anything. You only pay once you’ve seen the options and decided to go ahead.</p>
+      </details>
+      <details class="qitem rv" data-d="1">
+        <summary><em>02</em>How soon will I hear back?</summary>
+        <p>Within a day. For anything urgent, call us directly on <a href="tel:+918008555000">+91 80085 55000</a>.</p>
+      </details>
+      <details class="qitem rv" data-d="2">
+        <summary><em>03</em>Can I come to the office without an appointment?</summary>
+        <!-- TODO: walk-in vs. appointment policy pending client confirmation -->
+        <p>For visa and passport work, calling ahead helps us have your checklist ready.</p>
+      </details>
+      <details class="qitem rv" data-d="3">
+        <summary><em>04</em>Can I get just a visa or a ticket, without a holiday package?</summary>
+        <p>Yes. Every service can be booked on its own: visas, passports, forex, insurance and tickets.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER (same as the homepage) -->
+<footer>
+  <div class="wrap">
+
+    <div class="fgrid">
+      <div class="fbrand">
+        <div class="lg"><img src="assets/images/brand/disha-logo-nav.png" alt="Disha Travel Services"></div>
+        <p>Your trusted travel partner since 2011. Holidays, tickets and paperwork, handled by the same people who planned your trip.</p>
+        <div class="soc">
+          <a href="#" aria-label="Disha Travel Services on Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Disha Travel Services on Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="Disha Travel Services on LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" aria-label="Disha Travel Services on YouTube"><i class="bi bi-youtube"></i></a>
+          <a href="#" aria-label="Chat with us on WhatsApp"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+      <nav class="fcol" aria-label="Menu options">
+        <h4>Menu Options</h4>
+        <a href="index.html">Home</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="holidays-and-tours.html">Holidays &amp; Tours</a>
+        <a href="services.html">Travel Services</a>
+        <a href="about-us.html">About Us</a>
+        <a href="contact-us.html">Contact Us</a>
+      </nav>
+      <nav class="fcol" aria-label="Good to know">
+        <h4>Good to Know</h4>
+        <a href="#">Booking Terms</a>
+        <a href="#">Cancellation &amp; Refund Policy</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Payment Options</a>
+        <a href="#faq">FAQs</a>
+        <a href="#">Sitemap</a>
+      </nav>
+      <nav class="fcol" aria-label="Destinations">
+        <h4>Destinations</h4>
+        <a href="#">Bali · Dubai · Paris</a>
+        <a href="#">Maldives · Switzerland</a>
+        <a href="#">Thailand · Vietnam</a>
+        <a href="#">Kerala · Kashmir</a>
+        <a href="#">Ladakh · Rajasthan</a>
+        <a href="#">Andaman</a>
+      </nav>
+    </div>
+
+    <div class="fcontact">
+      <div class="fitem">
+        <i class="bi bi-geo-alt"></i>
+        <div>
+          <h5>Visit us</h5>
+          <p>#1-1-379/2 &amp; A, SRT 10, St. No. 6,<br>Near Andhra Cafe, Opp. Axis Bank,<br>Jawahar Nagar, Hyderabad 500020, Telangana</p>
+        </div>
+      </div>
+      <div class="fitem">
+        <i class="bi bi-telephone"></i>
+        <div>
+          <h5>Call us</h5>
+          <p><a href="tel:+918008555000">+91 80085 55000</a><br>
+             <a href="tel:+918125666000">+91 81256 66000</a></p>
+        </div>
+      </div>
+      <div class="fitem">
+        <i class="bi bi-envelope"></i>
+        <div>
+          <h5>Write to us</h5>
+          <p><a href="mailto:info@dishats.com">info@dishats.com</a><br>
+             <a href="https://www.dishats.com">www.dishats.com</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="fbot">
+      <div>© 2026 Disha Travel Services. All rights reserved.</div>
+      <div class="flegal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Booking Terms</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/pages.js"></script>
+</body>
+</html>

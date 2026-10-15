@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon/icon-192.png">
+<link rel="apple-touch-icon" href="assets/images/favicon/apple-touch-icon.png">
+<meta name="theme-color" content="#5E1A5E">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Destinations | Disha Travel Services, Hyderabad</title>
+<meta name="description" content="Fifty-nine destinations across nine world regions and India, each with the one practical thing worth knowing before you book. Browse by region, month, trip length and trip type.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/destinations.css">
+<link rel="stylesheet" href="css/enquiry.css">
+<link rel="stylesheet" href="css/loader.css">
+<script src="js/loader.js"></script>
+</head>
+<body>
+
+<!-- HEADER (same as the homepage) -->
+<header class="hdr"><div class="wrap">
+  <a class="logo" href="index.html" aria-label="Disha Travel Services, home">
+    <img src="assets/images/brand/disha-logo-nav.png" alt="Disha Travel Services. We take care of your travel &amp; holidays">
+  </a>
+  <nav id="sitenav">
+    <a href="index.html">Home</a>
+    <a href="destinations.html" class="on" aria-current="page">Destinations</a>
+    <a href="holidays-and-tours.html">Holidays &amp; Tours</a>
+    <div class="nav-dd">
+      <a href="services.html">Services <i class="bi bi-chevron-down" aria-hidden="true"></i></a>
+      <div class="nav-dd-menu">
+        <a href="service-visa.html"><i class="bi bi-file-earmark-text" aria-hidden="true"></i>Visa Services</a>
+        <a href="service-passport.html"><i class="bi bi-passport" aria-hidden="true"></i>Passport Services</a>
+        <a href="service-forex.html"><i class="bi bi-cash-stack" aria-hidden="true"></i>Forex Assistance</a>
+        <a href="service-travel-insurance.html"><i class="bi bi-umbrella" aria-hidden="true"></i>Travel Insurance</a>
+        <a href="service-air-tickets.html"><i class="bi bi-airplane" aria-hidden="true"></i>Air Tickets</a>
+        <a href="service-train-tickets.html"><i class="bi bi-train-front" aria-hidden="true"></i>Train Tickets</a>
+        <a href="service-bus-tickets.html"><i class="bi bi-bus-front" aria-hidden="true"></i>Bus Tickets</a>
+        <a href="services.html" class="nav-dd-all">View all services <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <a href="about-us.html">About Us</a>
+    <a href="contact-us.html">Contact Us</a>
+  </nav>
+  <button class="navtoggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sitenav"><i class="bi bi-list"></i></button>
+  <a class="btn btn-purple" href="contact-us.html#enquiry" data-enquiry>Enquire Now</a>
+</div></header>
+
+<main class="dpage">
+
+<!-- 1 HERO — the map. Hover or tap a region; the photograph behind it
+     changes only where we hold a genuine photo of that region. -->
+<section class="dhero" aria-labelledby="dest-h1">
+  <div class="dh-bg" aria-hidden="true">
+    <div class="dh-layer is-on" data-k="islands"><img src="assets/images/destinations/maldives.jpg" alt="" fetchpriority="high"></div>
+  </div>
+  <div class="dh-veil" aria-hidden="true"></div>
+
+  <div class="wrap dh-grid">
+    <div class="dh-copy">
+      <span class="hkicker dh-kick2"><b>Destinations</b></span>
+      <h1 class="dh-h1b" id="dest-h1">Point at the map.<br><em>We’ll do the rest.</em></h1>
+      <p class="dh-lead">From the northern lights over Finland to the lagoons of the Maldives, and every place in between.</p>
+      <div class="dh-cta hcta">
+        <!-- TODO: switch to the enquiry popup (pre-set "Destination — undecided") once it exists -->
+        <a class="btn btn-primary" href="contact-us.html?dest=undecided#enquiry">Help Me Choose <i class="bi bi-arrow-right"></i></a>
+        <a class="btn btn-ghost" href="#explore" data-open-view="map">See All Destinations</a>
+      </div>
+    </div>
+
+    <div class="dh-mapwrap">
+      <div class="dh-map" id="dhMap">
+        <img class="dh-dots" src="assets/images/graphics/world-map-light.svg" alt="" aria-hidden="true" width="1200" height="601">
+        <span class="dh-tip" aria-hidden="true"></span>
+      </div>
+      <p class="dh-now" aria-live="polite"><span>Now showing</span><b id="dhNowRegion">Islands &amp; the Indian Ocean</b><em id="dhNowCap"></em></p>
+    </div>
+  </div>
+</section>
+
+<!-- 2 THE DIRECTORY -->
+<section class="dx" id="explore" aria-labelledby="dx-h">
+  <div class="wrap">
+    <header class="dx-head">
+      <div>
+        <div class="eyebrow">Where We Go</div>
+        <h2 id="dx-h">The world, grouped the way you’d actually plan it.</h2>
+      </div>
+    </header>
+
+    <div class="dx-views" role="tablist" aria-label="Ways to browse">
+      <button class="dx-view" type="button" role="tab" id="tab-map" data-view="map" aria-controls="view-map" aria-selected="true">By region</button>
+      <button class="dx-view" type="button" role="tab" id="tab-cal" data-view="cal" aria-controls="view-cal" aria-selected="false" tabindex="-1">By month</button>
+    </div>
+  </div>
+
+
+  <div class="wrap">
+    <!-- THE MAP: filters + region directory -->
+    <div class="dx-panel" id="view-map" role="tabpanel" aria-labelledby="tab-map">
+      <div class="dx-layout">
+        <aside class="dx-filters" id="dxFilters" aria-label="Filter destinations">
+          <div class="df-head">
+            <h2>Filter by</h2>
+            <button type="button" class="df-clear" disabled>Clear all</button>
+            <button type="button" class="df-x" aria-label="Close filters"><i class="bi bi-x-lg"></i></button>
+          </div>
+          <div class="df-groups"></div>
+          <div class="df-apply"><button type="button" class="btn btn-purple">Show destinations</button></div>
+        </aside>
+        <div class="df-scrim" hidden></div>
+
+        <div class="dx-results">
+          <div class="dx-bar">
+            <button type="button" class="dx-filterbtn" aria-controls="dxFilters" aria-expanded="false"><i class="bi bi-sliders"></i>Filters <b></b></button>
+            <p class="dx-count" aria-live="polite">Showing <b>59</b> of 59 destinations</p>
+            <div class="dx-chips"></div>
+          </div>
+
+          <div id="dxRegions"></div>
+
+          <div class="dx-empty" hidden>
+            <h3>Nothing matches all of those.</h3>
+            <p>Remove a filter, or tell us what you’re after and we’ll suggest somewhere.</p>
+            <div class="dx-empty-act">
+              <a class="btn btn-purple" href="contact-us.html?dest=undecided#enquiry">Help Me Choose</a>
+              <button type="button" class="df-clear df-reset">Clear all filters</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- THE CALENDAR: by month -->
+    <div class="dx-panel" id="view-cal" role="tabpanel" aria-labelledby="tab-cal" hidden>
+      <div class="vh">
+        <h3>Tell us the month. We’ll tell you where.</h3>
+        <p>Most people have the dates before they have the destination. Start there instead.</p>
+      </div>
+      <!-- Client to confirm: these windows are broadly correct, but operational knowledge overrides them. -->
+      <div class="cal" id="calRows"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 CLOSING ENQUIRY -->
+<section class="sec dclose" aria-labelledby="close-h">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Start Planning</div>
+      <h2 id="close-h">Not sure where yet? <em>That’s the easiest problem we solve.</em></h2>
+      <p>Tell us the month, roughly what you want to spend and who’s coming, especially if anyone eats Jain, walks slowly, or has never flown before. Within one working day, a person from our team comes back with two or three destinations that fit, the inclusions written out, and an honest reason why we ruled the others out.</p>
+    </div>
+    <div class="dclose-act">
+      <!-- TODO: switch to the enquiry popup once it exists -->
+      <a class="btn btn-primary" href="contact-us.html?dest=undecided#enquiry">Start My Trip Plan <i class="bi bi-arrow-right"></i></a>
+      <a class="btn btn-ghost" href="tel:+918008555000"><i class="bi bi-telephone"></i>Call +91 80085 55000</a>
+      <!-- TODO: WhatsApp number pending client confirmation -->
+      <a class="btn btn-ghost" href="https://wa.me/918008555000" target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i>WhatsApp Us</a>
+      <small>No payment required. This is an enquiry, not a booking.</small>
+    </div>
+  </div>
+</section>
+
+<!-- 8 PARTNERS & ACCREDITATION -->
+<!-- NOTE FOR LAUNCH: the IATA accreditation below was flagged internally as
+     "placeholder pending client confirmation". Confirm Disha actually holds it
+     before this page goes live, and remove the entry if it does not. -->
+<section class="prt">
+  <div class="wrap">
+    <div class="prt-head">
+      <div class="eyebrow">Partners &amp; Accreditation</div>
+      <h2>Backed by a network the world trusts.</h2>
+      <p>Authorised Franchisee Partner for Heena Tours &amp; Travels and FORAM Worldwide, alongside leading airlines, top-rated hotels and globally recognised travel associations.</p>
+    </div>
+
+    <div class="ppanel">
+      <div class="plogo h">
+        <span class="pslot"><img class="pmark-img" src="assets/images/brand/heena-logo.png" alt="Heena Tours &amp; Travels" loading="lazy"></span>
+        <span class="prole">Authorised Franchisee Partner</span>
+      </div>
+      <div class="plogo f">
+        <span class="pslot"><img class="pmark-img" src="assets/images/brand/foram-worldwide-logo.png" alt="FORAM Worldwide" loading="lazy"></span>
+        <span class="prole">Authorised Franchisee Partner</span>
+      </div>
+      <div class="plogo i">
+        <span class="pslot"><img class="pmark-img" src="assets/images/brand/iata-logo.svg" alt="IATA Accredited" loading="lazy"></span>
+        <span class="prole">Direct air ticketing authority</span>
+      </div>
+    </div>
+
+    <ul class="pstrip">
+      <li>Leading airlines</li>
+      <li>Top-rated hotel chains</li>
+      <li>Global travel associations</li>
+      <li>Licensed visa &amp; forex channels</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<!-- DESTINATION DETAIL (opened by #d-<id>) -->
+<div class="dd" id="dd" aria-hidden="true">
+  <div class="dd-scrim"></div>
+  <div class="dd-panel" role="dialog" aria-modal="true" aria-labelledby="ddTitle">
+    <button type="button" class="dd-x" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+    <div class="dd-scroll"></div>
+    <div class="dd-cta">
+      <!-- TODO: switch to the enquiry popup once it exists -->
+      <a class="btn btn-primary dd-plan" href="contact-us.html#enquiry">Plan This Trip <i class="bi bi-arrow-right"></i></a>
+      <a class="btn btn-outline" href="tel:+918008555000"><i class="bi bi-telephone"></i>Talk to a Travel Expert</a>
+      <p>No payment required. An enquiry, not a booking.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER (same as the homepage) -->
+<footer>
+  <div class="wrap">
+
+    <div class="fgrid">
+      <div class="fbrand">
+        <div class="lg"><img src="assets/images/brand/disha-logo-nav.png" alt="Disha Travel Services"></div>
+        <p>Your trusted travel partner since 2011. Holidays, tickets and paperwork, handled by the same people who planned your trip.</p>
+        <div class="soc">
+          <a href="#" aria-label="Disha Travel Services on Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Disha Travel Services on Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="Disha Travel Services on LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" aria-label="Disha Travel Services on YouTube"><i class="bi bi-youtube"></i></a>
+          <a href="#" aria-label="Chat with us on WhatsApp"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+      <nav class="fcol" aria-label="Menu options">
+        <h4>Menu Options</h4>
+        <a href="index.html">Home</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="holidays-and-tours.html">Holidays &amp; Tours</a>
+        <a href="services.html">Travel Services</a>
+        <a href="about-us.html">About Us</a>
+        <a href="contact-us.html">Contact Us</a>
+      </nav>
+      <nav class="fcol" aria-label="Good to know">
+        <h4>Good to Know</h4>
+        <a href="#">Booking Terms</a>
+        <a href="#">Cancellation &amp; Refund Policy</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Payment Options</a>
+        <a href="contact-us.html#faq">FAQs</a>
+        <a href="#">Sitemap</a>
+      </nav>
+      <nav class="fcol" aria-label="Destinations">
+        <h4>Destinations</h4>
+        <a href="#">Bali · Dubai · Paris</a>
+        <a href="#">Maldives · Switzerland</a>
+        <a href="#">Thailand · Vietnam</a>
+        <a href="#">Kerala · Kashmir</a>
+        <a href="#">Ladakh · Rajasthan</a>
+        <a href="#">Andaman</a>
+      </nav>
+    </div>
+
+    <div class="fcontact">
+      <div class="fitem">
+        <i class="bi bi-geo-alt"></i>
+        <div>
+          <h5>Visit us</h5>
+          <p>#1-1-379/2 &amp; A, SRT 10, St. No. 6,<br>Near Andhra Cafe, Opp. Axis Bank,<br>Jawahar Nagar, Hyderabad 500020, Telangana</p>
+        </div>
+      </div>
+      <div class="fitem">
+        <i class="bi bi-telephone"></i>
+        <div>
+          <h5>Call us</h5>
+          <p><a href="tel:+918008555000">+91 80085 55000</a><br>
+             <a href="tel:+918125666000">+91 81256 66000</a></p>
+        </div>
+      </div>
+      <div class="fitem">
+        <i class="bi bi-envelope"></i>
+        <div>
+          <h5>Write to us</h5>
+          <p><a href="mailto:info@dishats.com">info@dishats.com</a><br>
+             <a href="https://www.dishats.com">www.dishats.com</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="fbot">
+      <div>© 2026 Disha Travel Services. All rights reserved.</div>
+      <div class="flegal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Booking Terms</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<noscript><p class="dnoscript">The destination directory needs JavaScript. <a href="contact-us.html">Contact us</a> and we’ll help you choose.</p></noscript>
+<script src="js/enquiry.js"></script>
+<script src="js/main.js"></script>
+<script src="js/destinations-data.js"></script>
+<script src="js/destinations.js"></script>
+</body>
+</html>

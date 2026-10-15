@@ -1,0 +1,588 @@
+/* ======================================================================
+   HOLIDAYS & TOURS (holiday collections)
+   Loaded after style.css; reuses its tokens, header, footer, buttons and
+   .eyebrow. The travel motifs — boarding passes, a passport stamp, a
+   flight path, luggage-tag labels — are drawn in CSS/SVG and kept quiet.
+   ====================================================================== */
+.hpage{--ease:cubic-bezier(.22,.7,.3,1);--paper:#FFFDF8;--veg:#1F5E3F;--veg-2:#2E7A50;--veg-ink:#0F3322}
+
+/* opt-in reveal (js adds .js-hreveal to <html>) */
+.js-hreveal .hrv{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js-hreveal .hrv.is-in{opacity:1;transform:none}
+
+.js-hreveal .hc.hrv{transition:opacity .8s var(--ease),transform .8s var(--ease),filter .5s ease,box-shadow .45s ease,border-color .3s ease}
+.js-hreveal .bp.hrv{transition:opacity .8s var(--ease),transform .8s var(--ease),filter .45s ease}
+
+/* shared small label: wide-tracked caps */
+.hk{display:block;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+
+/* ======================================================================
+   1 HERO — three boarding-pass prints on a flight path
+   ====================================================================== */
+.hhero{position:relative;isolation:isolate;overflow:hidden;background:var(--purple-900);color:#fff;
+ padding:calc(clamp(96px,9vw,118px) + clamp(30px,5vh,64px)) 0 clamp(56px,8vh,96px)}
+.hhero:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+ background:radial-gradient(ellipse 55% 70% at 85% 45%,rgba(142,44,142,.28),transparent 70%)}
+.hh-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(30px,4.5vw,72px);align-items:center}
+@keyframes hup{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes hline{from{transform:translateY(105%)}to{transform:none}}
+.hh-kicker{display:inline-flex;align-items:center;gap:14px;font-size:11px;font-weight:600;letter-spacing:.24em;
+ text-transform:uppercase;color:rgba(255,255,255,.7);animation:hup .8s var(--ease) both}
+.hh-kicker:before{content:"";width:44px;height:1px;background:var(--gold)}
+.hh-h1{font-family:'Playfair Display',Georgia,serif;font-weight:500;color:#fff;margin:clamp(16px,2vw,24px) 0 0;
+ font-size:clamp(38px,4.6vw,70px);line-height:1.05;letter-spacing:-.025em}
+.hh-h1 .ln{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
+.hh-h1 .ln > span{display:block;animation:hline 1s var(--ease) both}
+.hh-h1 .ln:nth-child(2) > span{animation-delay:.14s}
+.hh-h1 em{font-style:italic;color:var(--gold)}
+.hh-sub{max-width:30em;margin:clamp(18px,2vw,26px) 0 0;color:rgba(255,255,255,.76);font-size:clamp(15px,1.2vw,17.5px);
+ font-weight:300;line-height:1.7;animation:hup .9s .35s var(--ease) both}
+.hh-cta{display:flex;align-items:center;gap:16px 28px;flex-wrap:wrap;margin-top:clamp(24px,3vw,38px);animation:hup .9s .45s var(--ease) both}
+.hh-cta .btn{display:inline-flex;align-items:center;gap:9px}
+.hlink{position:relative;display:inline-flex;align-items:center;gap:9px;padding-bottom:4px;font-size:12.5px;font-weight:600;
+ letter-spacing:.1em;text-transform:uppercase;color:#fff;text-decoration:none}
+.hlink:after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--gold);
+ transform:scaleX(.35);transform-origin:left;transition:transform .5s var(--ease)}
+.hlink:hover:after,.hlink:focus-visible:after{transform:scaleX(1)}
+.hlink i{transition:transform .4s var(--ease)}
+.hlink:hover i{transform:translateX(4px)}
+.hlink:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+
+/* the prints */
+.hh-art{position:relative;min-width:0}
+.hh-route{position:absolute;inset:-12% -6% -8% -10%;width:116%;height:120%;z-index:0;overflow:visible;pointer-events:none}
+.hh-route .r-line{fill:none;stroke:rgba(255,255,255,.22);stroke-width:1.6;stroke-dasharray:5 9;stroke-linecap:round}
+.hh-route .r-plane{filter:drop-shadow(0 6px 8px rgba(0,0,0,.45))}
+.hh-tiles{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,1.4vw,18px);align-items:start}
+.hp{margin:0;display:flex;flex-direction:column;background:var(--paper);border-radius:6px;overflow:hidden;
+ box-shadow:0 30px 60px rgba(8,1,8,.45),0 4px 12px rgba(8,1,8,.25);
+ animation:hup 1s var(--ease) both;transition:transform .5s var(--ease)}
+.hp:nth-child(1){margin-top:14%;animation-delay:.35s}
+.hp:nth-child(2){animation-delay:.5s}
+.hp:nth-child(3){margin-top:26%;animation-delay:.65s}
+.hp:hover{transform:translateY(-6px) rotate(-.6deg)}
+.hp-pic{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--purple-700)}
+.hp-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform 1.2s var(--ease)}
+.hp:hover .hp-pic img{transform:scale(1.1)}
+/* perforated tear line between the photo and the stub */
+.hp-tear{position:relative;height:0;border-top:1.5px dashed #D8CBD4;margin:0 10px}
+.hp-tear:before,.hp-tear:after{content:"";position:absolute;top:-8px;width:16px;height:16px;border-radius:50%;background:var(--purple-900)}
+.hp-tear:before{left:-18px}
+.hp-tear:after{right:-18px}
+.hp figcaption{display:flex;flex-direction:column;gap:2px;padding:12px 14px 14px;color:var(--purple-900)}
+.hp figcaption b{font-size:clamp(9px,.75vw,10.5px);font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--purple-500)}
+.hp figcaption span{display:inline-flex;align-items:center;gap:5px;font-family:'Playfair Display',serif;font-size:clamp(15px,1.3vw,19px);font-weight:600;line-height:1.2}
+.hp figcaption span i{font-size:.75em;color:var(--gold)}
+
+/* ======================================================================
+   2 SIGNATURE — Pure Veg Group Tours
+   ====================================================================== */
+.hveg{position:relative;background:var(--veg);color:#fff;overflow:hidden}
+.hveg:before{content:"";position:absolute;inset:0;pointer-events:none;
+ background:radial-gradient(ellipse 50% 80% at 92% 20%,rgba(255,235,170,.14),transparent 62%)}
+.hveg .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(32px,5vw,80px);align-items:center}
+.hv-badge{display:inline-flex;align-items:center;gap:8px;font-size:10.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+ color:var(--veg-ink);background:#CFF0DC;padding:7px 14px;border-radius:var(--r-pill)}
+.hveg h2{font-size:clamp(30px,3.6vw,50px);font-weight:500;line-height:1.1;color:#fff;margin:22px 0 0;text-wrap:balance}
+.hveg h2 em{font-style:italic;color:#FFE08A}
+.hv-body{margin:20px 0 0;font-size:clamp(15px,1.15vw,16.5px);line-height:1.8;color:rgba(255,255,255,.88);font-weight:300;max-width:36em}
+.hv-line{margin:20px 0 0;padding-left:18px;border-left:2px solid #FFE08A;font-family:'Playfair Display',serif;font-style:italic;
+ font-size:clamp(17px,1.5vw,21px);line-height:1.5;color:#fff;max-width:30em}
+.hv-facts{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:26px 0 0;padding:0}
+.hv-facts li{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid rgba(255,255,255,.3);border-radius:var(--r-pill);
+ font-size:12.5px;color:#fff}
+.hv-facts i{color:#CFF0DC}
+.hveg .btn{margin-top:28px;display:inline-flex;align-items:center;gap:9px;background:#fff;color:var(--veg-ink)}
+.hveg .btn:hover{background:#FFE08A;color:var(--veg-ink)}
+
+/* the itinerary card: "A day on a Pure Veg tour" */
+.hv-card{position:relative;background:var(--paper);color:var(--purple-900);border-radius:6px;
+ box-shadow:0 34px 70px rgba(5,25,15,.4);overflow:visible}
+.hv-card-pic{position:relative;height:clamp(150px,15vw,200px);overflow:hidden;border-radius:6px 6px 0 0}
+.hv-card-pic img{width:100%;height:100%;object-fit:cover;display:block}
+.hv-card-body{padding:clamp(20px,2.4vw,30px)}
+.hv-card h3{font-size:clamp(21px,1.9vw,26px);color:var(--veg-ink);margin:6px 0 18px}
+.hv-day{list-style:none;margin:0;padding:0;position:relative}
+.hv-day:before{content:"";position:absolute;left:6px;top:10px;bottom:10px;border-left:1.5px dashed #B9D8C5}
+.hv-day li{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 16px;padding:0 0 18px}
+.hv-day li:last-child{padding-bottom:0}
+.hv-dot{grid-row:span 2;width:13px;height:13px;margin-top:5px;border-radius:50%;background:var(--paper);border:2px solid var(--veg-2)}
+.hv-day li:nth-child(2) .hv-dot{background:#FFE08A;border-color:#C99A06}
+.hv-day li:nth-child(3) .hv-dot{background:var(--veg-2)}
+.hv-day b{font-size:14.5px;color:var(--veg-ink);font-weight:600}
+.hv-day b small{display:inline-block;margin-right:8px;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#6B8F7A}
+.hv-day p{margin:0;font-size:13.5px;line-height:1.6;color:#4A4450}
+/* passport stamp, slowly turning, pinned to the card corner */
+.hv-stamp{position:absolute;top:-38px;right:-30px;z-index:2;width:clamp(104px,9vw,128px);aspect-ratio:1;color:#C0392B;
+ transform:rotate(-12deg);transition:transform .6s var(--ease)}
+.hv-card:hover .hv-stamp{transform:rotate(-4deg) scale(1.05)}
+.hv-stamp svg{width:100%;height:100%;display:block;overflow:visible}
+.hv-stamp .ring{animation:hspin 40s linear infinite;transform-origin:50% 50%}
+@keyframes hspin{to{transform:rotate(360deg)}}
+
+/* ======================================================================
+   3 WHO'S COMING ALONG? — filter + 9 collections
+   ====================================================================== */
+.hcol{background:var(--surface)}
+.hc-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px clamp(24px,4vw,64px);align-items:end}
+.hc-head h2{font-size:clamp(30px,3.4vw,46px);color:var(--purple-700);margin:0;text-wrap:balance}
+.hc-head p{margin:0;color:var(--muted);font-size:16px;line-height:1.7;max-width:30em}
+/* filter as a row of luggage tags */
+.hc-who{display:flex;flex-wrap:wrap;gap:10px;margin:clamp(28px,3vw,40px) 0 0;padding:0;list-style:none}
+.hc-who li{flex:none}
+.tag-btn{white-space:nowrap;position:relative;display:inline-flex;align-items:center;gap:9px;padding:10px 16px 10px 26px;border:1px solid var(--line);
+ border-radius:4px 999px 999px 4px;background:#fff;cursor:pointer;font-family:inherit;font-size:13px;font-weight:500;color:#4A4450;
+ transition:background .25s ease,color .25s ease,border-color .25s ease,transform .3s var(--ease)}
+.tag-btn:before{content:"";position:absolute;left:10px;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;
+ border:1.5px solid currentColor;opacity:.6}
+.tag-btn:hover{border-color:var(--purple-400);color:var(--purple-700);transform:translateY(-2px) rotate(-1deg)}
+.tag-btn[aria-pressed="true"]{background:var(--purple-700);border-color:var(--purple-700);color:#fff}
+.tag-btn[aria-pressed="true"]:before{opacity:1;background:var(--gold);border-color:var(--gold)}
+.tag-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.hc-status{margin:16px 0 0;font-size:13px;color:var(--muted);min-height:20px}
+.hc-status b{color:var(--purple-700)}
+
+.hc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,1.8vw,26px);margin-top:clamp(24px,2.6vw,34px);align-items:stretch}
+.hc{position:relative;display:flex;flex-direction:column;min-width:0;background:var(--paper);border:1px solid #EFE4EA;border-radius:6px;
+ overflow:hidden;scroll-margin-top:24px;
+ transition:opacity .5s ease,filter .5s ease,transform .45s var(--ease),box-shadow .45s ease,border-color .3s ease}
+.hc:hover{transform:translateY(-4px);box-shadow:0 26px 54px rgba(94,26,94,.13);border-color:rgba(169,63,169,.3)}
+.hc.is-dim{opacity:.32;filter:grayscale(.85)}
+.hc.is-dim:hover{transform:none;box-shadow:none}
+.hc-pic{position:relative;aspect-ratio:16/10;margin:0;overflow:hidden;background:var(--purple-700)}
+.hc-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
+.hc:hover .hc-pic img{transform:scale(1.06)}
+/* the collection number as a small passport stamp */
+.hc-no{position:absolute;top:12px;left:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+ width:56px;height:56px;border-radius:50%;border:1.5px solid rgba(255,255,255,.85);color:#fff;background:rgba(26,5,26,.32);
+ transform:rotate(-10deg);transition:transform .5s var(--ease);line-height:1}
+.hc-no small{font-size:7.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.hc-no b{font-family:'Playfair Display',serif;font-size:19px;font-weight:600;margin-top:2px}
+.hc:hover .hc-no{transform:rotate(4deg) scale(1.06)}
+/* stamp artwork where we hold no fitting photograph */
+.hc-pic.is-stamp{background:#F5EDE4;display:flex;align-items:center;justify-content:center}
+.hc-pic.is-stamp svg{width:58%;max-width:190px;height:auto;color:var(--purple-500);transform:rotate(-8deg);transition:transform .6s var(--ease)}
+.hc:hover .hc-pic.is-stamp svg{transform:rotate(0deg) scale(1.04)}
+.hc-pic.is-stamp .hc-no{border-color:var(--purple-500);color:var(--purple-700);background:transparent}
+
+.hc-body{display:flex;flex-direction:column;flex:1;padding:clamp(20px,2vw,26px)}
+.hc h3{font-size:clamp(22px,1.9vw,26px);color:var(--purple-700);margin:0;line-height:1.15}
+.hc-hook{margin:8px 0 0;font-family:'Playfair Display',serif;font-style:italic;font-size:16px;line-height:1.5;color:#5C4E5A}
+.hc-sort{margin-top:18px;padding-top:16px;border-top:1px dashed #E2D4DE}
+.hc-sort ul{list-style:none;margin:8px 0 0;padding:0}
+.hc-sort li{position:relative;padding:4px 0 4px 24px;font-size:13.5px;line-height:1.5;color:#3F3943}
+.hc-sort li:before{content:"\F26E";font-family:'bootstrap-icons';position:absolute;left:0;top:4px;font-size:15px;color:var(--purple-500)}
+.hc-ideas{margin-top:14px}
+.hc-ideas p{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 0}
+.hc-ideas a,.hc-ideas span.pl{display:inline-flex;align-items:center;gap:5px;padding:4px 11px 4px 9px;border-radius:var(--r-pill);
+ background:#fff;border:1px solid var(--line);font-size:12px;color:var(--purple-700);text-decoration:none;transition:border-color .2s ease,background .2s ease}
+.hc-ideas a i,.hc-ideas span.pl i{font-size:11px;color:var(--gold)}
+.hc-ideas a:hover{border-color:var(--purple-700);background:var(--surface-alt)}
+.hc-q{margin:18px 0 0;padding:14px 16px;background:#fff;border-left:2px solid var(--gold);border-radius:0 4px 4px 0}
+.hc-q p{margin:0;font-family:'Playfair Display',serif;font-style:italic;font-size:14.5px;line-height:1.55;color:var(--purple-900)}
+.hc-q cite{display:block;margin-top:6px;font-style:normal;font-size:11.5px;font-weight:600;color:var(--muted)}
+.hc-foot{margin-top:auto;padding-top:20px}
+.hc-cta{position:relative;display:inline-flex;align-items:center;gap:8px;padding-bottom:3px;font-size:12px;font-weight:600;letter-spacing:.1em;
+ text-transform:uppercase;color:var(--purple-700);text-decoration:none}
+.hc-cta:after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--gold);transform:scaleX(.3);
+ transform-origin:left;transition:transform .5s var(--ease)}
+.hc:hover .hc-cta:after,.hc-cta:focus-visible:after{transform:scaleX(1)}
+.hc-cta i{transition:transform .4s var(--ease)}
+.hc:hover .hc-cta i{transform:translateX(4px)}
+.hc-cta:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+
+/* ======================================================================
+   4 PLAN AROUND YOUR HOLIDAYS — boarding passes
+   ====================================================================== */
+.hwin{background:var(--surface-alt)}
+.hwin .sec-head{margin-bottom:clamp(28px,3vw,40px)}
+.bp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2vw,26px)}
+.bp{position:relative;display:grid;grid-template-columns:minmax(0,1fr) clamp(104px,11vw,132px);min-width:0;
+ filter:drop-shadow(0 16px 30px rgba(94,26,94,.12));transition:transform .45s var(--ease),filter .45s ease}
+.bp:hover{transform:translateY(-4px);filter:drop-shadow(0 24px 40px rgba(94,26,94,.18))}
+/* the two halves; notches are cut where the perforation runs */
+.bp-main,.bp-stub{background:#fff;
+ -webkit-mask:radial-gradient(circle 10px at 100% 0,transparent 98%,#000) top/100% 51% no-repeat,
+              radial-gradient(circle 10px at 100% 100%,transparent 98%,#000) bottom/100% 51% no-repeat;
+         mask:radial-gradient(circle 10px at 100% 0,transparent 98%,#000) top/100% 51% no-repeat,
+              radial-gradient(circle 10px at 100% 100%,transparent 98%,#000) bottom/100% 51% no-repeat}
+.bp-main{border-radius:8px 0 0 8px;padding:clamp(20px,2.2vw,28px);border-right:1.5px dashed #E2D4DE}
+.bp-stub{border-radius:0 8px 8px 0;padding:clamp(18px,2vw,24px) 14px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+ text-align:center;transition:transform .45s var(--ease);
+ -webkit-mask:radial-gradient(circle 10px at 0 0,transparent 98%,#000) top/100% 51% no-repeat,
+              radial-gradient(circle 10px at 0 100%,transparent 98%,#000) bottom/100% 51% no-repeat;
+         mask:radial-gradient(circle 10px at 0 0,transparent 98%,#000) top/100% 51% no-repeat,
+              radial-gradient(circle 10px at 0 100%,transparent 98%,#000) bottom/100% 51% no-repeat}
+.bp:hover .bp-stub{transform:translateX(5px) rotate(1.5deg)}
+.bp-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.bp-top .hk{color:var(--purple-500)}
+.bp-top i{font-size:16px;color:var(--gold);transform:rotate(45deg)}
+.bp h3{font-size:clamp(21px,1.9vw,26px);color:var(--purple-700);margin:12px 0 8px;line-height:1.2}
+.bp-txt{margin:0;font-size:14px;line-height:1.65;color:#4A4450}
+.bp-route{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.bp-route a{font-size:12.5px;font-weight:600;color:var(--purple-700);text-decoration:none;letter-spacing:.02em}
+.bp-route a:hover{color:var(--purple-500);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px}
+.bp-route i{font-size:9px;color:#C9B6C5}
+.bp-when{display:flex;flex-direction:column;gap:6px}
+.bp-when b{font-family:'Playfair Display',serif;font-size:clamp(20px,2vw,26px);font-weight:600;line-height:1;color:var(--purple-900)}
+.bp-when b small{display:block;font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;letter-spacing:.18em;color:var(--muted);margin:5px 0}
+.bp-code{width:100%;height:34px;margin-top:14px;opacity:.75;
+ background:repeating-linear-gradient(90deg,var(--purple-900) 0 2px,transparent 2px 4px,var(--purple-900) 4px 5px,transparent 5px 8px,var(--purple-900) 8px 11px,transparent 11px 13px)}
+.bp-note{margin:clamp(22px,2.4vw,30px) 0 0;display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+.bp-note i{color:var(--gold)}
+.bp-note a{color:var(--purple-700);font-weight:600;text-decoration:none;border-bottom:1px solid var(--gold)}
+
+/* ======================================================================
+   5 CUSTOM TRIP — dark card
+   ====================================================================== */
+.hcustom{background:var(--surface)}
+.hx{position:relative;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,4vw,64px);align-items:center;
+ padding:clamp(30px,4.4vw,64px);background:var(--purple-900);color:#fff;border-radius:8px;overflow:hidden}
+.hx:before{content:"";position:absolute;inset:0;pointer-events:none;
+ background:radial-gradient(ellipse 50% 90% at 100% 0,rgba(253,185,19,.12),transparent 60%)}
+.hx > *{position:relative}
+.hx .eyebrow{color:#F3D9EC}
+.hx h2{font-size:clamp(28px,3.2vw,44px);font-weight:500;color:#fff;margin:0;text-wrap:balance}
+.hx h2 em{font-style:italic;color:var(--gold)}
+.hx-line{margin:16px 0 0;color:rgba(255,255,255,.78);font-size:15.5px;line-height:1.75;max-width:30em}
+.hx-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hx-cta .btn{display:inline-flex;align-items:center;gap:9px}
+.hx-cta .btn-ghost{border-color:rgba(255,255,255,.4)}
+/* the four prompts, set like the fields of a travel form */
+.hx-form{list-style:none;margin:0;padding:clamp(20px,2.4vw,30px);background:var(--paper);color:var(--purple-900);border-radius:6px;
+ box-shadow:0 30px 60px rgba(0,0,0,.35);transform:rotate(1.2deg);transition:transform .6s var(--ease)}
+.hx:hover .hx-form{transform:rotate(0deg)}
+.hx-form li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 16px;padding:14px 0;border-bottom:1px dashed #E2D4DE}
+.hx-form li:first-child{padding-top:0}
+.hx-form li:last-child{border-bottom:none;padding-bottom:0}
+.hx-form em{grid-row:span 2;font-family:'Playfair Display',serif;font-style:italic;font-size:15px;color:var(--gold);padding-top:2px}
+.hx-form b{font-size:15px;font-weight:600}
+.hx-form span{height:20px;border-bottom:1px solid #CBB9C6;position:relative}
+.hx-form span:after{content:"";position:absolute;left:0;bottom:-1px;width:0;height:1px;background:var(--purple-500);transition:width .9s var(--ease)}
+.hx:hover .hx-form span:after{width:100%}
+.hx-form li:nth-child(2) span:after{transition-delay:.1s}
+.hx-form li:nth-child(3) span:after{transition-delay:.2s}
+.hx-form li:nth-child(4) span:after{transition-delay:.3s}
+
+/* ======================================================================
+   RESPONSIVE
+   ====================================================================== */
+@media (max-width:1100px){
+  .hc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:900px){
+  .hh-grid,.hveg .wrap,.hx,.hc-head{grid-template-columns:minmax(0,1fr)}
+  .hh-art{max-width:620px}
+  .hv-card{max-width:560px}
+  .hv-stamp{right:-6px;top:-44px}
+  .bp-grid{grid-template-columns:minmax(0,1fr)}
+  .hx-form{transform:none}
+}
+@media (max-width:640px){
+  .hh-h1{font-size:clamp(34px,10vw,46px)}
+  .hh-cta{flex-direction:column;align-items:stretch;gap:16px}
+  .hh-cta .btn{justify-content:center}
+  .hh-cta .hlink{align-self:center}
+  .hh-tiles{gap:8px}
+  .hp figcaption{padding:9px 9px 10px}
+  .hp-tear{margin:0 6px}
+  .hp-tear:before{left:-14px}
+  .hp-tear:after{right:-14px}
+  .hc-grid{grid-template-columns:minmax(0,1fr)}
+  .hc-who{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-20px;padding:4px 20px 8px}
+  .hc-who::-webkit-scrollbar{display:none}
+  .tag-btn{flex:none}
+  .bp{grid-template-columns:minmax(0,1fr) 96px}
+  .bp-when b{font-size:18px}
+  .hveg .btn,.hx-cta .btn{width:100%;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){
+  .hhero *,.hhero *:before{animation:none !important}
+  .js-hreveal .hrv{opacity:1;transform:none;transition:none}
+  .hv-stamp .ring{animation:none}
+  .hp,.hc,.bp,.bp-stub,.hx-form,.tag-btn{transition:none}
+}
+
+/* ======================================================================
+   COLLECTION CARDS, REFINED
+   Title and hook sit on a taller photograph; labels in sentence case;
+   "We sort" as a plain dotted list; destination ideas as one line of
+   links; the call to action is a footer pinned to the card's foot.
+   ====================================================================== */
+.hc-grid{gap:clamp(20px,2.2vw,30px)}
+.hc{border:0;border-radius:18px;background:#fff;box-shadow:0 14px 36px rgba(94,26,94,.09),0 1px 3px rgba(94,26,94,.06)}
+.hc:hover{transform:translateY(-6px);box-shadow:0 30px 60px rgba(94,26,94,.16),0 2px 6px rgba(94,26,94,.08)}
+.hc-pic{aspect-ratio:4/3.35;border-radius:18px 18px 0 0}
+.hc-pic:after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+ background:linear-gradient(to top,rgba(20,4,20,.9) 0%,rgba(20,4,20,.55) 32%,rgba(20,4,20,0) 62%)}
+.hc-cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:0 22px 20px;color:#fff}
+.hc-cap h3{font-size:clamp(23px,1.9vw,28px);font-weight:500;color:#fff;margin:0;line-height:1.12;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+.hc-cap .hc-hook{margin:6px 0 0;font-family:'Poppins',sans-serif;font-style:normal;font-size:13.5px;line-height:1.5;color:rgba(255,255,255,.86)}
+.hc-no{top:16px;left:auto;right:16px;width:auto;height:auto;padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.5);
+ background:rgba(20,4,20,.35);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transform:none;flex-direction:row;gap:5px;z-index:2}
+.hc-no small{font-size:10px;letter-spacing:.06em;text-transform:none;font-weight:500;opacity:.8}
+.hc-no b{font-size:14px;margin:0}
+.hc:hover .hc-no{transform:none}
+
+.hc-body{padding:20px 22px 0}
+.hc .hk{font-size:13px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--purple-700)}
+.hc-sort{margin-top:0;padding-top:0;border-top:0}
+.hc-sort ul{margin-top:8px}
+.hc-sort li{padding:3px 0 3px 18px;font-size:14px}
+.hc-sort li:before{content:"";top:.72em;left:2px;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.hc-ideas{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.hc-ideas p{display:block;margin:6px 0 0;line-height:1.7}
+.hc-ideas a,.hc-ideas span.pl{display:inline;padding:0;border:0;background:none;border-radius:0;font-size:14px;color:var(--purple-500);
+ text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s ease,color .2s ease}
+.hc-ideas a i,.hc-ideas span.pl i{display:none}
+.hc-ideas a:hover{background:none;color:var(--purple-700);border-bottom-color:var(--gold)}
+.hc-ideas p > *:not(:last-child):after{content:",";color:var(--muted);margin-right:4px}
+.hc-q{margin:16px 0 0;padding:14px 16px;background:var(--surface-alt);border-left:0;border-radius:12px;position:relative}
+.hc-q p{font-size:14px}
+.hc-q cite{font-weight:500}
+.hc-foot{margin:auto -22px 0;padding:0;border-top:1px solid var(--line)}
+.hc-body{display:flex;flex-direction:column}
+.hc-body > .hc-foot{margin-top:auto}
+.hc-body:after{content:"";display:block;height:18px;order:-1;flex:none;height:0}
+.hc-cta{display:flex;align-items:center;justify-content:space-between;width:100%;padding:16px 22px;margin-top:20px;font-size:14px;
+ letter-spacing:0;text-transform:none}
+.hc-cta:after{display:none}
+.hc-cta i{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);
+ transition:background .3s ease,color .3s ease,border-color .3s ease,transform .4s var(--ease)}
+.hc:hover .hc-cta i{background:var(--purple-700);border-color:var(--purple-700);color:#fff;transform:translateX(3px)}
+.hc.is-dim{opacity:.35;filter:grayscale(.9)}
+
+/* ======================================================================
+   COLLECTION TILES — photograph and heading only; the whole tile links.
+   ====================================================================== */
+.hc.hc-tile{padding:0;overflow:hidden}
+.hc-link{position:relative;display:block;height:100%;color:#fff;text-decoration:none;border-radius:18px}
+.hc-link:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.hc-tile .hc-pic{aspect-ratio:4/4.6;border-radius:18px}
+.hc-tile .hc-pic:after{background:linear-gradient(to top,rgba(20,4,20,.85) 0%,rgba(20,4,20,.35) 30%,rgba(20,4,20,0) 55%)}
+.hc-tile h3{position:absolute;left:24px;right:24px;bottom:22px;z-index:2;margin:0;font-size:clamp(24px,2vw,30px);font-weight:500;
+ line-height:1.12;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.35);transition:transform .5s var(--ease)}
+.hc-tile:hover h3{transform:translateY(-4px)}
+@media (max-width:640px){
+  .hc-tile .hc-pic{aspect-ratio:4/3.4}
+}
+
+/* ======================================================================
+   HERO (current) — full-bleed, matching the homepage and Services heroes:
+   same eyebrow, Poppins headline, buttons and purple wash. The three
+   traveller types from the copy are photo selectors that change the
+   background and cycle on their own.
+   ====================================================================== */
+.hhb{position:relative;isolation:isolate;overflow:hidden;background:var(--purple-900);color:#fff;
+ height:100svh;min-height:560px;display:flex;flex-direction:column}
+.hhb-media{position:absolute;inset:0;z-index:-2}
+.hhb-slide{position:absolute;inset:0;margin:0;opacity:0;transition:opacity 1.6s cubic-bezier(.4,0,.2,1)}
+.hhb-slide.is-on{opacity:1}
+.hhb-slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.1);transition:transform 9s cubic-bezier(.2,.6,.3,1)}
+.hhb-slide.is-on img{transform:scale(1.01)}
+.hhb-scrim{position:absolute;inset:0;z-index:-1;pointer-events:none;
+ background:linear-gradient(100deg,rgba(26,5,26,.94) 0%,rgba(40,9,40,.86) 36%,rgba(56,14,54,.62) 64%,rgba(70,20,66,.4) 100%)}
+.hhb > .wrap{width:100%}
+.hhb-main{flex:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:clamp(28px,4vw,64px);align-items:center;
+ padding-top:clamp(110px,14vh,150px);padding-bottom:clamp(24px,5vh,56px);min-height:0}
+.hhb-copy{max-width:620px}
+.hhb-copy .hkicker{animation:hup .8s var(--ease) both}
+.hhb h1{font-family:'Poppins',system-ui,sans-serif;color:#fff;font-size:clamp(30px,min(4.2vw,6vh),56px);line-height:1.12;
+ letter-spacing:-.025em;font-weight:600;margin:clamp(12px,1.8vh,24px) 0 0;text-wrap:balance;animation:hup .9s .1s var(--ease) both}
+.hhb h1 em{font-style:normal;font-weight:500;color:rgba(255,255,255,.86);letter-spacing:-.02em}
+.hhb-sub{margin:clamp(10px,1.6vh,20px) 0 0;font-size:clamp(14px,min(1.25vw,2vh),18px);line-height:1.6;color:#fff;max-width:31em;
+ animation:hup .9s .2s var(--ease) both}
+.hhb .hcta{animation:hup .9s .3s var(--ease) both}
+
+/* traveller-type selectors */
+.hhb-picks{display:flex;flex-direction:column;gap:12px;animation:hup 1s .45s var(--ease) both}
+.hhb-pick{position:relative;display:grid;grid-template-columns:76px minmax(0,1fr);align-items:center;gap:16px;padding:10px 16px 10px 10px;
+ border:1px solid rgba(255,255,255,.16);border-radius:14px;background:rgba(20,4,20,.35);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+ color:#fff;font-family:inherit;text-align:left;cursor:pointer;overflow:hidden;transition:background .35s ease,border-color .35s ease,transform .4s var(--ease)}
+.hhb-pick:hover{background:rgba(255,255,255,.1);transform:translateX(-4px)}
+.hhb-pick.is-on{background:rgba(255,255,255,.14);border-color:rgba(253,185,19,.6)}
+.hhb-pick:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.hhb-thumb{display:block;width:76px;height:58px;border-radius:9px;overflow:hidden}
+.hhb-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.hhb-pick:hover .hhb-thumb img,.hhb-pick.is-on .hhb-thumb img{transform:scale(1.08)}
+.hhb-tx b{display:block;font-size:15px;font-weight:600;line-height:1.3}
+.hhb-tx small{display:inline-flex;align-items:center;gap:6px;margin-top:2px;font-size:12.5px;color:rgba(255,255,255,.72)}
+.hhb-tx small i{color:var(--gold);font-size:11px}
+.hhb-run{position:absolute;left:0;right:0;bottom:0;height:2px;background:rgba(255,255,255,.08)}
+.hhb-run i{position:absolute;inset:0;background:var(--gold);transform-origin:left;transform:scaleX(0)}
+.hhb-pick.is-on .hhb-run i.go{animation:hhb-run var(--dur,6.5s) linear forwards}
+@keyframes hhb-run{to{transform:scaleX(1)}}
+
+@media (max-width:900px){
+  .hhb{height:auto;min-height:100svh}
+  .hhb-main{grid-template-columns:minmax(0,1fr);align-content:center;padding-bottom:40px}
+  .hhb-picks{flex-direction:row;overflow-x:auto;scrollbar-width:none;margin-inline:-28px;padding-inline:28px}
+  .hhb-picks::-webkit-scrollbar{display:none}
+  .hhb-pick{flex:0 0 250px}
+}
+@media (max-width:640px){
+  .hhb h1{font-size:clamp(28px,8.4vw,38px)}
+  .hhb .hcta .btn{flex:1 1 100%}
+  .hhb-picks{margin-inline:-20px;padding-inline:20px}
+  .hhb-pick{flex-basis:220px;grid-template-columns:60px minmax(0,1fr)}
+  .hhb-thumb{width:60px;height:48px}
+}
+@media (prefers-reduced-motion:reduce){
+  .hhb *{animation:none !important}
+  .hhb-slide,.hhb-slide img{transition:none}
+  .hhb-slide img{transform:none}
+}
+
+/* ======================================================================
+   WHO'S COMING ALONG? — one selector bar: icon, label and how many
+   collections fit. The chosen option fills purple.
+   ====================================================================== */
+.hc-who{display:flex;flex-wrap:wrap;gap:6px;margin:clamp(24px,2.6vw,34px) 0 0;padding:8px;list-style:none;
+ background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 12px 30px rgba(94,26,94,.07)}
+.hc-who li{flex:1 1 auto}
+.tag-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:9px;padding:12px 16px;border:0;border-radius:12px;
+ background:transparent;font-size:14px;font-weight:500;color:#4A4450;white-space:nowrap;cursor:pointer;
+ transition:background .3s ease,color .3s ease,transform .3s var(--ease)}
+.tag-btn:before{display:none}
+.tag-btn i{font-size:17px;color:var(--purple-500);transition:color .3s ease,transform .4s var(--ease)}
+.tag-btn:hover{background:var(--surface-alt);color:var(--purple-700);border-color:transparent;transform:none}
+.tag-btn:hover i{transform:translateY(-2px)}
+.tag-btn[aria-pressed="true"]{background:var(--purple-700);color:#fff;box-shadow:0 10px 22px rgba(94,26,94,.28)}
+.tag-btn[aria-pressed="true"] i{color:var(--gold)}
+.tag-n{font-style:normal;min-width:22px;height:22px;padding:0 7px;border-radius:11px;display:inline-flex;align-items:center;justify-content:center;
+ font-size:11.5px;font-weight:600;background:var(--surface-alt);color:var(--purple-700)}
+.tag-n:empty{display:none}
+.tag-btn[aria-pressed="true"] .tag-n{background:rgba(255,255,255,.18);color:#fff}
+.tag-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.hc-status{margin-top:14px}
+@media (max-width:640px){
+  .hc-who{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-20px;border-radius:0;border-left:0;border-right:0;padding:8px 20px}
+  .hc-who::-webkit-scrollbar{display:none}
+  .hc-who li{flex:none}
+}
+/* seven equal columns, icon above the label */
+.hc-who{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.tag-btn{flex-direction:column;gap:6px;padding:14px 8px 12px;white-space:normal;text-align:center;line-height:1.3;font-size:13.5px;min-height:100%}
+.tag-btn i{font-size:21px}
+.tag-btn .tag-n{margin-top:2px}
+@media (max-width:1000px){
+  .hc-who{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  .hc-who{display:flex}
+  .tag-btn{min-width:118px}
+}
+.tag-btn .tag-n{margin-top:auto}
+.tag-btn span{flex:1;display:flex;align-items:center}
+
+/* real filtering: non-matching tiles leave the grid, the rest close up and fade in */
+.hc[hidden]{display:none !important}
+@keyframes hc-enter{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+.hc.hc-enter{animation:hc-enter .5s var(--ease) both}
+.hc-status{display:flex;align-items:center;flex-wrap:wrap;gap:6px 14px}
+.hc-reset{border:0;background:none;padding:0;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;color:var(--purple-500);
+ text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px}
+.hc-reset:hover{color:var(--purple-700)}
+@media (prefers-reduced-motion:reduce){.hc.hc-enter{animation:none}}
+.hc-status{display:block}
+.hc-reset{margin-left:12px}
+
+/* ======================================================================
+   FILTER — editorial tabs. Plain labels on one line over a hairline;
+   a gold underline slides to the chosen one.
+   ====================================================================== */
+.hc-who{position:relative;display:flex;flex-wrap:nowrap;gap:clamp(18px,2.6vw,40px);margin:clamp(22px,2.4vw,32px) 0 0;padding:0;
+ background:none;border:0;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none;overflow-x:auto;scrollbar-width:none}
+.hc-who::-webkit-scrollbar{display:none}
+.hc-who li{flex:none}
+.tag-btn{width:auto;display:block;padding:14px 0 16px;border:0;border-radius:0;background:none;box-shadow:none;min-height:0;
+ font-size:15px;font-weight:500;color:var(--muted);white-space:nowrap;text-align:left;line-height:1.3;transition:color .25s ease}
+.tag-btn:hover{background:none;color:var(--purple-700)}
+.tag-btn[aria-pressed="true"]{background:none;box-shadow:none;color:var(--purple-700);font-weight:600}
+.tag-btn span{display:inline;flex:none}
+.tag-btn:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:4px}
+.hc-ink{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--gold);border-radius:2px;pointer-events:none;
+ transition:left .45s var(--ease),width .45s var(--ease)}
+.hc-status{margin-top:16px}
+@media (max-width:640px){
+  .hc-who{margin-inline:-20px;padding-inline:20px;gap:24px}
+  .tag-btn{font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){.hc-ink{transition:none}}
+@media (max-width:640px){
+  .tag-btn{min-width:0}
+}
+.hc-status:empty{display:none}
+
+/* ======================================================================
+   PURE VEG (current) — light warm ground, brand purple; green appears
+   only as the small "100% vegetarian" accent.
+   ====================================================================== */
+.hv2{background:#FBF7F2}
+.hv2-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(32px,5vw,80px);align-items:center}
+.hv2-pic{position:relative;margin:0;aspect-ratio:4/4.4;border-radius:20px;overflow:hidden;box-shadow:0 30px 60px rgba(94,26,94,.14)}
+.hv2-pic img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.hv2-pic:hover img{transform:scale(1.04)}
+.hv2-tag{position:absolute;left:18px;bottom:18px;display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;
+ background:#fff;color:#1F6B44;font-size:13px;font-weight:600;box-shadow:0 10px 24px rgba(0,0,0,.18)}
+.hv2-tag i{font-size:15px}
+.hv2-tx h2{font-size:clamp(30px,3.4vw,46px);font-weight:500;color:var(--purple-700);margin:0;line-height:1.12;text-wrap:balance}
+.hv2-tx h2 em{font-style:normal;color:var(--purple-500)}
+.hv2-body{margin:18px 0 0;font-size:16px;line-height:1.75;color:#4A4450;max-width:36em}
+.hv2-h3{margin:30px 0 4px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--purple-700)}
+.hv2-day{list-style:none;margin:0;padding:0}
+.hv2-day li{display:grid;grid-template-columns:92px minmax(0,1fr);gap:2px 18px;padding:14px 0;border-bottom:1px solid var(--line)}
+.hv2-day span{grid-row:span 2;padding-top:2px;font-size:13px;font-weight:600;color:var(--gold-700,#B07A00)}
+.hv2-day b{font-size:15.5px;font-weight:600;color:var(--purple-900)}
+.hv2-day p{margin:0;font-size:14px;line-height:1.6;color:var(--muted)}
+.hv2-cta{margin-top:28px;display:inline-flex;align-items:center;gap:9px}
+@media (max-width:900px){
+  .hv2-grid{grid-template-columns:minmax(0,1fr)}
+  .hv2-pic{aspect-ratio:16/10}
+}
+@media (max-width:640px){
+  .hv2-day li{grid-template-columns:minmax(0,1fr)}
+  .hv2-day span{grid-row:auto}
+  .hv2-cta{width:100%;justify-content:center}
+}
+
+/* ======================================================================
+   ONE HEADING STYLE ACROSS THE PAGE
+   Every heading (h2 and h3, below the hero) is Playfair Display, upright,
+   weight 500, the same as "Pick what you need." on Services. Accent
+   halves change colour only, never to italic.
+   ====================================================================== */
+.hpage h2,.hpage h3{font-family:'Playfair Display',Georgia,serif;font-style:normal;font-weight:500;letter-spacing:-.01em;font-synthesis:none}
+.hpage h2 em,.hpage h3 em{font-style:normal;font-weight:500}
+.hpage h2{line-height:1.12}
+.hv2-h3{font-family:'Playfair Display',Georgia,serif;font-size:20px;color:var(--purple-700)}
+
+/* ======================================================================
+   MADE TO MEASURE — cleaner card: heading on two lines, buttons side by
+   side, the four prompts as a numbered list (no tilted paper).
+   ====================================================================== */
+.hx{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;border-radius:20px;padding:clamp(32px,4.6vw,64px)}
+.hx h2{font-size:clamp(28px,3vw,42px);line-height:1.15;max-width:13em}
+.hx h2 em{color:var(--gold)}
+.hx-cta{flex-wrap:wrap;align-items:center}
+.hx-cta .btn{flex:0 0 auto}
+.hx-form{transform:none;padding:8px 26px;border-radius:16px;box-shadow:0 24px 50px rgba(0,0,0,.3)}
+.hx:hover .hx-form{transform:none}
+.hx-form li{grid-template-columns:40px minmax(0,1fr);align-items:center;gap:0 14px;padding:18px 0;border-bottom:1px solid #EFE4EA}
+.hx-form li:last-child{border-bottom:0}
+.hx-form em{grid-row:auto;display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;padding:0;
+ background:var(--surface-alt);font-family:'Poppins',sans-serif;font-style:normal;font-size:13px;font-weight:600;color:var(--purple-700)}
+.hx-form b{font-size:15px;font-weight:500;color:var(--purple-900)}
+.hx-form span{display:none}
+@media (max-width:900px){
+  .hx{grid-template-columns:minmax(0,1fr)}
+}
+.bp-route i.sep{font-style:normal;font-size:14px;color:#C9B6C5}
+
+/* boarding passes: the tear-off stub carries the colour, each window its own shade */
+.bp-stub{background:var(--purple-700)}
+.bp-when b{color:#fff}
+.bp-when b small{color:var(--gold)}
+.bp-code{opacity:1;background:repeating-linear-gradient(90deg,rgba(255,255,255,.85) 0 2px,transparent 2px 4px,rgba(255,255,255,.85) 4px 5px,transparent 5px 8px,rgba(255,255,255,.85) 8px 11px,transparent 11px 13px)}
+.bp-main{border-right-color:transparent}
+.bp h3{color:var(--purple-700)}

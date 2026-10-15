@@ -19,17 +19,8 @@
      The CTAs that should open an enquiry form carry data-enquiry. They used
      to be marked with a visible "▸ POPUP" pill from the mockup; the hook is
      now an attribute so nothing shows on the page. */
-  document.querySelectorAll('a[data-enquiry]').forEach(function (trigger) {
-    trigger.addEventListener('click', function (e) {
-      e.preventDefault();
-      openEnquiry(trigger.textContent.trim());
-    });
-  });
-
-  function openEnquiry(context) {
-    // TODO: replace with the enquiry modal.
-    console.log('Enquiry popup requested:', context);
-  }
+  /* js/enquiry.js owns these when the page loads it (the popup). Without
+     it, the links fall back to their href: the form on contact-us.html. */
 
   /* Newsletter signup */
   var nform = document.querySelector('.nform');
@@ -582,7 +573,7 @@
 
     wall.querySelectorAll('.gal-open').forEach(function (btn) {
       var cap = btn.getAttribute('data-cap') || '';
-      var place = cap.split('—')[0].trim();
+      var place = cap.split(',')[0].trim();
       if (place) btn.setAttribute('data-place', place);
     });
 

@@ -1,0 +1,94 @@
+/* ======================================================================
+   PAGE-TRANSITION LOADER  (js/loader.js builds the markup)
+   A slowly turning Earth inside soft concentric rings, with an airliner
+   orbiting outside the rings. Every moving part is a transform or an
+   opacity change, so it all runs on the compositor.
+   Sizes derive from one variable (--o, the stage), which is capped by
+   the viewport's short side, so nothing can leave the screen.
+   ====================================================================== */
+.dl{--o:min(70vmin,420px);--p:calc(var(--o) * .13);
+ position:fixed;inset:0;z-index:9999;overflow:hidden;
+ display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(18px,3vmin,30px);
+ background:radial-gradient(ellipse 70% 60% at 50% 46%,#3E0F3E 0%,#2A0A2A 58%,#170517 100%);
+ opacity:0;visibility:hidden;pointer-events:none;
+ transition:opacity .5s cubic-bezier(.4,0,.2,1),visibility 0s linear .5s}
+.dl.is-on{opacity:1;visibility:visible;pointer-events:auto;
+ transition:opacity .35s cubic-bezier(.4,0,.2,1),visibility 0s}
+/* arriving on a new page the overlay is already up at first paint */
+.dl.is-instant{transition:none}
+
+.dl-stage{position:relative;width:var(--o);height:var(--o);flex:none;
+ transform:scale(.96);transition:transform .7s cubic-bezier(.22,.7,.3,1)}
+.dl.is-on .dl-stage{transform:none}
+
+/* ---- rings: soft discs, the reference's "lens" layers ---- */
+.dl-ring{position:absolute;inset:0;margin:auto;border-radius:50%}
+.dl-r1{width:52%;height:52%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.22);
+ animation:dlpulse 3.6s ease-in-out infinite alternate}
+.dl-r2{width:62%;height:62%;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.12);
+ animation:dlpulse 3.6s 1.2s ease-in-out infinite alternate}
+.dl-r3{width:70%;height:70%;border:1px solid rgba(255,255,255,.07)}
+/* a faint gold arc travelling the outer ring */
+.dl-r3:before{content:"";position:absolute;inset:-1px;border-radius:50%;
+ background:conic-gradient(from 0deg,transparent 0deg,rgba(253,185,19,.55) 40deg,transparent 80deg);
+ -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 1.5px),#000 calc(100% - 1px));
+         mask:radial-gradient(farthest-side,transparent calc(100% - 1.5px),#000 calc(100% - 1px));
+ animation:dlspin 14s linear infinite reverse}
+@keyframes dlpulse{from{transform:scale(1);opacity:.85}to{transform:scale(1.035);opacity:1}}
+
+/* ---- the Earth ---- */
+.dl-globe{position:absolute;inset:0;margin:auto;width:40%;height:40%;border-radius:50%;
+ clip-path:circle(50%);
+ background:radial-gradient(circle at 36% 32%,#2D78BE 0%,#123F78 52%,#071D3D 100%)}
+/* two copies of the map side by side; the strip slides one map-width,
+   which loops seamlessly. Opacity fades the texture in once it is cached. */
+.dl-map{position:absolute;top:0;left:-200%;width:400%;height:100%;display:flex;
+ opacity:0;transition:opacity .6s ease;animation:dlturn 32s linear infinite}
+.dl.has-tex .dl-map{opacity:1}
+.dl-map i{flex:0 0 50%;height:100%;background:var(--dl-tex) 0 0/100% 100% no-repeat;
+ filter:saturate(1.08) contrast(1.05)}
+@keyframes dlturn{from{transform:translateX(0)}to{transform:translateX(50%)}}
+/* light: specular gloss, a soft terminator, limb darkening, atmosphere rim */
+.dl-shade{position:absolute;inset:0;border-radius:50%;
+ background:
+  radial-gradient(circle at 33% 27%,rgba(255,255,255,.42) 0%,rgba(255,255,255,.12) 14%,rgba(255,255,255,0) 34%),
+  linear-gradient(118deg,rgba(0,0,0,0) 42%,rgba(3,8,26,.42) 74%,rgba(2,5,18,.78) 100%),
+  radial-gradient(circle at 50% 50%,rgba(0,0,0,0) 54%,rgba(4,14,36,.45) 80%,rgba(2,8,24,.85) 100%);
+ box-shadow:inset 0 0 calc(var(--o) * .03) rgba(150,205,255,.55),
+            inset calc(var(--o) * .012) calc(var(--o) * .01) calc(var(--o) * .025) rgba(190,225,255,.28)}
+/* the atmosphere and the drop shadow sit outside the clip */
+.dl-glow{position:absolute;inset:0;margin:auto;width:40%;height:40%;border-radius:50%;
+ box-shadow:0 0 calc(var(--o) * .06) rgba(120,180,255,.22),
+            0 calc(var(--o) * .05) calc(var(--o) * .09) rgba(0,0,0,.45)}
+
+/* ---- the airliner's orbit, outside the rings ---- */
+.dl-orbit{position:absolute;inset:calc(var(--p) * .55);border-radius:50%;
+ animation:dlspin 6.5s linear infinite;will-change:transform}
+@keyframes dlspin{to{transform:rotate(360deg)}}
+/* trail: a thin arc fading out behind the aircraft (which sits at 0deg) */
+.dl-trail{position:absolute;inset:0;border-radius:50%;
+ background:conic-gradient(from 292deg,rgba(255,255,255,0) 0deg,rgba(255,236,190,.5) 64deg,rgba(255,236,190,0) 65deg);
+ -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 1.5px),#000 calc(100% - 1px));
+         mask:radial-gradient(farthest-side,transparent calc(100% - 1.5px),#000 calc(100% - 1px))}
+/* nose points up in the SVG; at the top of a clockwise orbit it heads right */
+.dl-plane{position:absolute;left:50%;top:0;width:var(--p);height:var(--p);
+ margin:calc(var(--p) / -2) 0 0 calc(var(--p) / -2);transform:rotate(90deg)}
+.dl-plane svg{display:block;width:100%;height:100%;overflow:visible;
+ filter:drop-shadow(0 0 calc(var(--p) * .08) rgba(0,0,0,.45))}
+
+/* ---- caption ---- */
+.dl-cap{margin:0;display:flex;align-items:center;gap:12px;font-family:'Poppins',system-ui,sans-serif;
+ font-size:clamp(9.5px,1.6vmin,11px);font-weight:500;letter-spacing:.32em;text-transform:uppercase;
+ color:rgba(255,255,255,.62);white-space:nowrap}
+.dl-cap:before,.dl-cap:after{content:"";width:28px;height:1px;background:rgba(253,185,19,.6)}
+.dl-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* pause the arriving page's own entrance animations until the overlay
+   lifts, so they play for the visitor rather than behind the loader */
+html.dl-hold body *{animation-play-state:paused !important}
+
+@media (prefers-reduced-motion:reduce){
+  .dl *,.dl *:before{animation:none !important}
+  .dl-stage{transition:none;transform:none}
+  .dl-orbit{transform:rotate(38deg)}
+}

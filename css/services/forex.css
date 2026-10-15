@@ -1,0 +1,48 @@
+/* Forex Assistance page only. Loaded after css/services.css. */
+/* ---- FOREX · cash vs card ---- */
+.cmp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2vw,28px)}
+.cmp-col{padding:clamp(24px,2.6vw,36px);border-radius:10px;background:#fff;border:1px solid var(--line);
+ transition:transform .45s var(--ease),box-shadow .45s ease}
+.cmp-col:hover{transform:translateY(-4px);box-shadow:0 24px 50px rgba(94,26,94,.12)}
+.cmp-col.cash{background:var(--purple-900);color:#fff;border-color:var(--purple-900)}
+.cmp-top{display:flex;align-items:center;gap:16px;padding-bottom:18px;margin-bottom:6px;border-bottom:1px solid var(--line)}
+.cash .cmp-top{border-color:rgba(255,255,255,.15)}
+.cmp-top i{display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;font-size:22px;
+ background:var(--surface-alt);color:var(--purple-500)}
+.cash .cmp-top i{background:rgba(253,185,19,.15);color:var(--gold)}
+.cmp-top h3{font-size:clamp(24px,2.2vw,30px);margin:0;color:var(--purple-700)}
+.cash .cmp-top h3{color:#fff}
+.cmp dl{margin:0}
+.cmp dl div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;padding:14px 0;border-bottom:1px dashed var(--line)}
+.cash dl div{border-color:rgba(255,255,255,.14)}
+.cmp dl div:last-child{border-bottom:0}
+.cmp dt{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.cash dt{color:rgba(255,255,255,.55)}
+.cmp dd{margin:0;font-size:15px;line-height:1.6}
+/* ---- FOREX · a departures board of currencies ---- */
+.board{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,170px),1fr));gap:8px;padding:clamp(12px,1.4vw,18px);
+ background:var(--purple-900);border-radius:10px}
+.cur{display:flex;flex-direction:column;gap:6px;padding:16px 16px 14px;background:#1C061C;border-radius:6px;
+ border:1px solid rgba(255,255,255,.06);transition:background .3s ease,transform .35s var(--ease)}
+.cur:hover{background:#2E0C2E;transform:translateY(-2px)}
+.cur b{font-family:'Courier New',ui-monospace,monospace;font-size:clamp(24px,2.2vw,30px);font-weight:700;letter-spacing:.14em;color:var(--gold)}
+.cur span{font-size:12.5px;line-height:1.4;color:rgba(255,255,255,.72)}
+.cur.flip b{animation:s-flip .6s var(--ease) both}
+/* ---- FOREX · documents ---- */
+.docs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.4vw,18px);list-style:none;margin:0;padding:0}
+.doc{display:flex;flex-direction:column;align-items:flex-start;gap:16px;padding:22px;background:var(--paper);border:1px solid #EFE4EA;
+ border-radius:8px;transition:transform .4s var(--ease),border-color .3s ease}
+.doc:hover{transform:translateY(-4px) rotate(-.6deg);border-color:var(--purple-400)}
+.doc i{font-size:28px;color:var(--purple-500)}
+.doc b{font-size:16px;color:var(--purple-700)}
+@media (max-width:1100px){
+  .docs{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  .cmp dl div{grid-template-columns:minmax(0,1fr);gap:4px}
+}
+.cmp-col.cash{box-shadow:0 20px 44px rgba(42,10,42,.25)}
+.board{border-radius:18px}
+.doc{gap:6px}
+.doc b{font-size:17px}
+.cmp-top{gap:0}
