@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon/icon-192.png">
+<link rel="apple-touch-icon" href="assets/images/favicon/apple-touch-icon.png">
+<meta name="theme-color" content="#5E1A5E">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Travel Packages | Europe, Egypt, South Africa, Vietnam | Disha Travel Services</title>
+<meta name="description" content="Ready-to-plan holiday packages from Disha Travel Services: Europe 12D/11N, Egypt Nile cruise, South Africa safari &amp; coast, and Vietnam island or classic itineraries. Filter by region, month, duration and trip type.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/packages.css">
+<link rel="stylesheet" href="css/enquiry.css">
+<link rel="stylesheet" href="css/loader.css">
+<script src="js/loader.js"></script>
+</head>
+<body>
+
+<header class="hdr"><div class="wrap">
+  <a class="logo" href="index.html" aria-label="Disha Travel Services, home">
+    <img src="assets/images/brand/disha-logo-nav.png" alt="Disha Travel Services. We take care of your travel &amp; holidays">
+  </a>
+  <nav id="sitenav">
+    <a href="index.html">Home</a>
+    <a href="destinations.html">Destinations</a>
+    <a href="holidays-and-tours.html">Holidays &amp; Tours</a>
+    <a href="packages.html" class="on" aria-current="page">Packages</a>
+    <div class="nav-dd">
+      <a href="services.html">Services <i class="bi bi-chevron-down" aria-hidden="true"></i></a>
+      <div class="nav-dd-menu">
+        <a href="service-visa.html"><i class="bi bi-file-earmark-text" aria-hidden="true"></i>Visa Services</a>
+        <a href="service-passport.html"><i class="bi bi-passport" aria-hidden="true"></i>Passport Services</a>
+        <a href="service-forex.html"><i class="bi bi-cash-stack" aria-hidden="true"></i>Forex Assistance</a>
+        <a href="service-travel-insurance.html"><i class="bi bi-umbrella" aria-hidden="true"></i>Travel Insurance</a>
+        <a href="service-air-tickets.html"><i class="bi bi-airplane" aria-hidden="true"></i>Air Tickets</a>
+        <a href="service-train-tickets.html"><i class="bi bi-train-front" aria-hidden="true"></i>Train Tickets</a>
+        <a href="service-bus-tickets.html"><i class="bi bi-bus-front" aria-hidden="true"></i>Bus Tickets</a>
+        <a href="services.html" class="nav-dd-all">View all services <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <a href="about-us.html">About Us</a>
+    <a href="contact-us.html">Contact Us</a>
+  </nav>
+  <button class="navtoggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sitenav"><i class="bi bi-list"></i></button>
+  <a class="btn btn-purple" href="contact-us.html#enquiry" data-enquiry>Enquire Now</a>
+</div></header>
+
+<main class="ppage">
+
+<section class="pkh" aria-labelledby="pk-h1">
+  <figure class="pkh-bg" aria-hidden="true"><img src="assets/images/destinations/vietnam-ha-long-bay.jpg" alt="" fetchpriority="high"></figure>
+  <div class="wrap pkh-in">
+    <span class="hkicker"><b>Holiday Packages</b></span>
+    <h1 id="pk-h1">Trips planned day by day.<br><em>Shaped around you.</em></h1>
+    <p class="pkh-lead">Ready itineraries for Europe, Egypt, South Africa and Vietnam. Every one can be adjusted: dates, hotels, pace and meals.</p>
+    <div class="hcta">
+      <a class="btn btn-primary" href="#browse">Browse Packages <i class="bi bi-arrow-down"></i></a>
+      <a class="btn btn-ghost" href="contact-us.html?dest=Custom%20package#enquiry" data-enquiry>Plan Something Custom</a>
+    </div>
+  </div>
+</section>
+
+<section class="plist-sec" id="browse" aria-labelledby="browse-h">
+  <div class="wrap">
+    <header class="pk-head">
+      <div class="eyebrow">Our Packages</div>
+      <h2 id="browse-h">Choose your package.</h2>
+    </header>
+
+    <div class="pk-layout">
+      <aside class="pk-filters" id="pkFilters" aria-label="Filter packages">
+        <div class="pk-fhead"><h2>Filter by</h2><button type="button" class="pk-clear">Clear all</button></div>
+        <div class="pk-fgroups"></div>
+      </aside>
+      <div class="pk-scrim" hidden></div>
+
+      <div>
+        <div class="pk-bar">
+          <button type="button" class="btn btn-outline pk-filterbtn" aria-controls="pkFilters" aria-expanded="false">
+            Filters <b></b>
+          </button>
+          <p class="pk-count" id="pkCount" aria-live="polite">Showing <b>6</b> of 6 packages</p>
+        </div>
+        <div class="pk-grid" id="pkGrid"></div>
+
+        <div class="pk-more">
+          <div>
+            <h3>Looking for somewhere else?</h3>
+            <p>Tell us where you want to go and we’ll build the itinerary around you, from the destinations we already plan.</p>
+          </div>
+          <div class="pk-more-act">
+            <a class="btn btn-purple" href="contact-us.html?dest=Custom%20package#enquiry" data-enquiry>Request a Custom Package</a>
+            <a class="btn btn-outline" href="destinations.html">Browse Destinations</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="pkd" id="pkd" aria-hidden="true">
+  <div class="pkd-scrim"></div>
+  <div class="pkd-panel" role="dialog" aria-modal="true" aria-labelledby="pkdTitle">
+    <button type="button" class="pkd-x" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+    <div class="pkd-scroll"></div>
+    <div class="pkd-cta">
+      <a class="btn btn-primary pkd-plan" href="contact-us.html#enquiry" data-enquiry>Enquire about this package <i class="bi bi-arrow-right"></i></a>
+      <a class="btn btn-outline" href="tel:+918008555000">Call +91 80085 55000</a>
+      <p>No payment required. An enquiry, not a booking.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fbrand">
+        <div class="lg"><img src="assets/images/brand/disha-logo-nav.png" alt="Disha Travel Services"></div>
+        <p>Your trusted travel partner since 2011. Holidays, tickets and paperwork, handled by the same people who planned your trip.</p>
+      </div>
+      <nav class="fcol" aria-label="Menu options">
+        <h4>Menu Options</h4>
+        <a href="index.html">Home</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="holidays-and-tours.html">Holidays &amp; Tours</a>
+        <a href="packages.html">Packages</a>
+        <a href="services.html">Travel Services</a>
+        <a href="contact-us.html">Contact Us</a>
+      </nav>
+      <nav class="fcol" aria-label="Packages on this page">
+        <h4>Packages live now</h4>
+        <a href="packages.html#europe-paris-amsterdam-london">Europe 12D / 11N</a>
+        <a href="packages.html#egypt-cairo-nile-hurghada">Egypt 9D / 8N</a>
+        <a href="packages.html#south-africa-11d">South Africa 11D / 10N</a>
+        <a href="packages.html#vietnam-phu-quoc-5d">Vietnam Phu Quoc</a>
+        <a href="packages.html#vietnam-classic-10d">Vietnam Classic 10D</a>
+        <a href="packages.html#vietnam-danang-saigon-5d">Da Nang · HCMC 5D</a>
+      </nav>
+      <nav class="fcol" aria-label="Contact">
+        <h4>Talk to us</h4>
+        <a href="tel:+918008555000">+91 80085 55000</a>
+        <a href="tel:+918125666000">+91 81256 66000</a>
+        <a href="mailto:info@dishats.com">info@dishats.com</a>
+      </nav>
+    </div>
+    <div class="fbot">
+      <div>© 2026 Disha Travel Services. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/enquiry.js"></script>
+<script src="js/main.js"></script>
+<script src="js/packages-data.js"></script>
+<script src="js/packages.js"></script>
+</body>
+</html>
