@@ -47,6 +47,7 @@
     document.body.appendChild(root);
     form = root.querySelector('.eq-form');
     done = root.querySelector('.eq-done');
+    window.DishaForms.prepare(form);
 
     root.addEventListener('click', function (e) {
       if (e.target.classList.contains('eq-scrim') || e.target.closest('.eq-x') || e.target.closest('.eq-close2')) close();
@@ -78,17 +79,21 @@
       if (!check(el) && !bad) bad = el;
     });
     if (bad) { bad.focus(); return; }
-    // TODO: post new FormData(form) to the enquiry endpoint.
-    root.querySelector('.eq-fn').textContent = form.elements.name.value.trim().split(/\s+/)[0] || 'there';
-    form.hidden = true;
-    done.hidden = false;
-    root.querySelector('.eq-close2').focus();
+    var first = form.elements.name.value.trim().split(/\s+/)[0] || 'there';
+    window.DishaForms.send(form, 'Enquire Now popup').then(function () {
+      root.querySelector('.eq-fn').textContent = first;
+      form.hidden = true;
+      done.hidden = false;
+      root.querySelector('.eq-close2').focus();
+    }, function () {});
   }
 
   function open(service) {
     build();
     lastFocus = document.activeElement;
     form.reset();
+    var m = form.querySelector('.form-msg');
+    if (m) m.textContent = '';
     form.hidden = false;
     done.hidden = true;
     [].forEach.call(form.querySelectorAll('.eq-f'), function (f) { f.classList.remove('is-bad'); f.querySelector('.eq-err') && (f.querySelector('.eq-err').textContent = ''); });

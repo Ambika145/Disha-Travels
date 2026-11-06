@@ -159,10 +159,10 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;font-weight:600;lin
  font-variant-numeric:lining-nums;line-height:1}
 .hkicker i{width:5px;height:5px;flex:none;transform:rotate(45deg);
  background:var(--gold);opacity:.9}
-.hero h1{font-family:'Poppins',system-ui,sans-serif;color:#fff;
+.hero h1,.hero .hero-title{font-family:'Poppins',system-ui,sans-serif;color:#fff;
  font-size:clamp(28px,min(4.2vw,5.4vh),52px);line-height:1.14;letter-spacing:-.025em;
  font-weight:600;margin:clamp(12px,1.8vh,24px) 0 0;text-wrap:balance}
-.hero h1 em{font-style:normal;font-weight:500;color:rgba(255,255,255,.86);letter-spacing:-.02em}
+.hero h1 em,.hero .hero-title em{font-style:normal;font-weight:500;color:rgba(255,255,255,.86);letter-spacing:-.02em}
 .hero .hcopy p{color:rgba(255,255,255,.72);font-size:clamp(12.5px,min(1.08vw,1.75vh),15.5px);line-height:1.65;
  max-width:34em;margin:clamp(10px,1.5vh,20px) 0 0;font-weight:300}
 .hero .hcopy p b{font-weight:500;color:#fff}
@@ -356,7 +356,7 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;font-weight:600;lin
 @media (max-width:900px){
   .hgrid{grid-template-columns:minmax(0,1fr);gap:clamp(16px,2.6vh,34px);
    padding-bottom:calc(var(--hpad) + 74px);align-content:center}
-  .hero h1{font-size:clamp(32px,min(6.4vw,5.4vh),48px)}
+  .hero h1,.hero .hero-title{font-size:clamp(32px,min(6.4vw,5.4vh),48px)}
   .hero .hcopy p{max-width:44em}
   .hart-stack{height:clamp(170px,24vh,280px);max-width:470px}
   .hart-deals{max-width:560px;gap:10px}
@@ -370,7 +370,7 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;font-weight:600;lin
 @media (max-width:640px){
   .hero{--hpad:clamp(12px,2.2vh,30px)}
   .hgrid{gap:clamp(14px,2.2vh,26px);padding-bottom:calc(var(--hpad) + 58px)}
-  .hero h1{font-size:clamp(23px,min(7vw,4.4vh),33px);line-height:1.12}
+  .hero h1,.hero .hero-title{font-size:clamp(23px,min(7vw,4.4vh),33px);line-height:1.12}
   .hero .hcopy p{font-size:clamp(12.5px,1.6vh,14px);line-height:1.55}
   .hkicker{letter-spacing:.2em;gap:9px}
   /* side by side rather than stacked — saves a whole row of height */
@@ -1384,30 +1384,55 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;font-weight:600;lin
 }
 
 /* FOOTER */
-footer{background:var(--purple-900);color:#D7C0D4;padding:64px 0 26px;font-size:12.5px}
+footer{position:relative;background:radial-gradient(1100px 420px at 85% 0%,rgba(140,45,140,.22),transparent 70%),var(--purple-900);color:#D7C0D4;padding:68px 0 26px;font-size:12.5px}
+footer::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--gold),#C2479C 55%,var(--purple-700))}
 
 .fgrid{display:grid;grid-template-columns:1.6fr 1fr 1.25fr 1.1fr;gap:52px;padding-bottom:42px;border-bottom:1px solid rgba(255,255,255,.12)}
 .fbrand .lg{display:inline-block;line-height:0}
 .fbrand .lg img{display:block;height:52px;width:auto}
 .fbrand p{margin:18px 0 0;max-width:300px;line-height:1.7;color:#B99BB6}
 
-.soc{display:flex;gap:9px;margin-top:20px}
-.soc a{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.10);color:#E8D5E6;display:flex;align-items:center;justify-content:center;font-size:14px;text-decoration:none;transition:background .25s ease,color .25s ease,transform .25s ease}
-.soc a:hover{background:var(--gold);color:#3A2600;transform:translateY(-2px)}
+/* Social links: "Follow us" + labelled pills that take each platform's colour on hover */
+.fsoc{margin-top:22px}
+.fsoc-h{display:block;font-family:'Poppins',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:12px}
+.soc{display:flex;flex-wrap:nowrap;gap:10px}
+.soc a span{display:none} /* icon-only; each link keeps its aria-label */
+.soc a{display:inline-flex;align-items:center;justify-content:center;flex:none;width:40px;height:40px;padding:0;border-radius:50%;
+ background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);color:#EBDCE9;
+ font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:500;line-height:1;text-decoration:none;white-space:nowrap;
+ transition:background .25s ease,border-color .25s ease,color .25s ease,transform .25s ease,box-shadow .25s ease}
+.soc a i{font-size:17px;line-height:1}
+.soc a:hover,.soc a:focus-visible{color:#fff;border-color:transparent;transform:translateY(-2px)}
+.soc a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.soc .soc-fb:hover,.soc .soc-fb:focus-visible{background:#1877F2;box-shadow:0 8px 20px rgba(24,119,242,.35)}
+.soc .soc-ig:hover,.soc .soc-ig:focus-visible{background:linear-gradient(45deg,#F58529,#DD2A7B 50%,#8134AF);box-shadow:0 8px 20px rgba(221,42,123,.35)}
+.soc .soc-wa:hover,.soc .soc-wa:focus-visible{background:#25D366;color:#073B1E;box-shadow:0 8px 20px rgba(37,211,102,.35)}
+@media (prefers-reduced-motion:reduce){.soc a{transition:none}.soc a:hover,.soc a:focus-visible{transform:none}}
 
 .fcol h4{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:16px;font-weight:600;font-family:'Poppins',sans-serif}
+.fcol h4::after{content:"";display:block;width:26px;height:2px;margin-top:11px;border-radius:2px;background:var(--gold)}
 .fcol a{display:block;color:#D7C0D4;text-decoration:none;padding:5px 0;line-height:1.5;transition:color .2s ease,padding-left .2s ease}
 .fcol a:hover{color:var(--gold);padding-left:4px}
 
-.fcontact{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;padding:34px 0;border-bottom:1px solid rgba(255,255,255,.12)}
-.fitem{display:flex;gap:14px;align-items:flex-start}
-.fitem > i{flex:none;width:34px;height:34px;border-radius:var(--r-sm);background:rgba(253,185,19,.14);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:15px}
+.fcontact{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:34px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.fitem{display:flex;gap:14px;align-items:flex-start;padding:18px 20px;border-radius:var(--r-md,16px);
+ background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);transition:border-color .25s ease,background .25s ease}
+.fitem:hover{border-color:rgba(253,185,19,.35);background:rgba(255,255,255,.055)}
+.fitem > i{flex:none;width:38px;height:38px;border-radius:var(--r-sm);background:rgba(253,185,19,.14);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:15px}
 .fitem h5{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#fff;font-weight:600;margin:0 0 7px}
 .fitem p{margin:0;line-height:1.75;color:#B99BB6}
 .fitem a{color:#B99BB6;text-decoration:none;transition:color .2s ease}
 .fitem a:hover{color:var(--gold)}
 
-.fbot{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding-top:22px;font-size:11.5px;color:#9C7F99}
+.fbot{display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;padding-top:22px;font-size:11.5px;color:#9C7F99}
+.fcopy{margin:0}
+/* "Designed & developed by Purview Digital" credit */
+.fcredit{display:inline-flex;align-items:center;gap:12px;padding:6px 8px 6px 16px;border-radius:999px;
+ border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:#B99BB6;text-decoration:none;
+ font-size:11px;letter-spacing:.02em;transition:border-color .25s ease,background .25s ease,color .25s ease}
+.fcredit img{display:block;height:36px;width:auto}
+.fcredit:hover{border-color:rgba(133,113,244,.6);background:rgba(133,113,244,.10);color:#fff}
+.fcredit:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .flegal{display:flex;gap:22px}
 .flegal a{color:#9C7F99;text-decoration:none;transition:color .2s ease}
 .flegal a:hover{color:var(--gold)}
@@ -1551,3 +1576,9 @@ footer{background:var(--purple-900);color:#D7C0D4;padding:64px 0 26px;font-size:
 .hkicker{gap:10px}
 /* ring text is spread to the full circumference via textLength; no extra tracking */
 .seal-ring text{letter-spacing:0}
+
+/* Enquiry forms: "couldn't send" message under the submit button (js/form-send.js) */
+.form-msg{margin:12px 0 0;font-size:14px;line-height:1.5;color:var(--muted)}
+.form-msg:empty{display:none}
+.form-msg.is-error{color:#B3261E}
+button[type="submit"]:disabled{opacity:.7;cursor:progress}

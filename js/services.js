@@ -271,10 +271,12 @@
     var bad = null;
     checked.forEach(function (i) { if (!check(i) && !bad) bad = i; });
     if (bad) { bad.focus(); return; }
-    // TODO: post new FormData(form) to the enquiry endpoint.
-    form.querySelector('.sf-fn').textContent = (form.elements.name.value.trim().split(/\s+/)[0]) || 'there';
-    form.querySelector('.sform-fields').hidden = true;
-    form.querySelector('.sform-foot').hidden = true;
-    form.querySelector('.sform-done').hidden = false;
+    var first = (form.elements.name.value.trim().split(/\s+/)[0]) || 'there';
+    window.DishaForms.send(form, 'Service form (' + (form.getAttribute('data-service') || '') + ')').then(function () {
+      form.querySelector('.sf-fn').textContent = first;
+      form.querySelector('.sform-fields').hidden = true;
+      form.querySelector('.sform-foot').hidden = true;
+      form.querySelector('.sform-done').hidden = false;
+    }, function () {});
   });
 })();

@@ -244,6 +244,11 @@
     if (e.key === 'Escape') closeDetail();
   });
 
-  var hash = location.hash.replace(/^#/, '');
-  if (hash && byId(hash)) openDetail(hash);
+  function fromHash() {
+    var hash = location.hash.replace(/^#/, '');
+    if (hash && byId(hash)) openDetail(hash);
+  }
+  fromHash();
+  // links to another package on this same page (e.g. the footer list) only change the hash
+  window.addEventListener('hashchange', fromHash);
 })();

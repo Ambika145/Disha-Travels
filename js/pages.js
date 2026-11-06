@@ -48,40 +48,20 @@
     }, 4000);
   })();
 
-  /* Enquiry form tabs (WAI-ARIA tabs pattern: arrows, Home/End). */
+  /* Contact page enquiry form (one form, no tabs): validation, sending, thank-you. */
   var card = document.getElementById('fcard');
   if (!card) return;
 
-  var tabs = [].slice.call(card.querySelectorAll('.ftab'));
-  var panels = tabs.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
+  var form = document.getElementById('contactForm');
   var done = card.querySelector('.fdone');
 
-  function select(i, focus) {
-    tabs.forEach(function (t, n) {
-      var on = n === i;
-      t.setAttribute('aria-selected', on ? 'true' : 'false');
-      t.tabIndex = on ? 0 : -1;
-      panels[n].hidden = !on;
-    });
-    done.hidden = true;
-    if (focus) tabs[i].focus();
-  }
+  /* Group / corporate links (?dest=Private Group Departure) pre-select "Group booking". */
+  (function () {
+    if (!window.URLSearchParams) return;
+    var dest = new URLSearchParams(location.search).get('dest') || '';
+    if (/group|corporate|institution/i.test(dest)) form.elements.enquiry_type.value = 'Group booking';
+  })();
 
-  tabs.forEach(function (t, i) {
-    t.addEventListener('click', function () { select(i); });
-    t.addEventListener('keydown', function (e) {
-      var n = null;
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = (i + 1) % tabs.length;
-      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = (i - 1 + tabs.length) % tabs.length;
-      if (e.key === 'Home') n = 0;
-      if (e.key === 'End') n = tabs.length - 1;
-      if (n === null) return;
-      e.preventDefault();
-      select(n, true);
-    });
-  });
-
-  /* Validation + thank-you state. */
   function setError(input, msg) {
     var field = input.closest('.ffield');
     var err = field.querySelector('.ferr');
@@ -103,39 +83,38 @@
     return '';
   }
 
-  panels.forEach(function (form) {
-    var inputs = [].slice.call(form.querySelectorAll('input[required], input[type="email"], input[type="tel"]'));
+  var inputs = [].slice.call(form.querySelectorAll('input[required], input[type="email"], input[type="tel"]'));
 
-    inputs.forEach(function (input) {
-      input.addEventListener('blur', function () { if (input.value) setError(input, check(input)); });
-      input.addEventListener('input', function () {
-        if (input.getAttribute('aria-invalid') === 'true') setError(input, check(input));
-      });
+  inputs.forEach(function (input) {
+    input.addEventListener('blur', function () { if (input.value) setError(input, check(input)); });
+    input.addEventListener('input', function () {
+      if (input.getAttribute('aria-invalid') === 'true') setError(input, check(input));
     });
+  });
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var firstBad = null;
-      inputs.forEach(function (input) {
-        var msg = check(input);
-        setError(input, msg);
-        if (msg && !firstBad) firstBad = input;
-      });
-      if (firstBad) { firstBad.focus(); return; }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var firstBad = null;
+    inputs.forEach(function (input) {
+      var msg = check(input);
+      setError(input, msg);
+      if (msg && !firstBad) firstBad = input;
+    });
+    if (firstBad) { firstBad.focus(); return; }
 
-      // TODO: post new FormData(form) to the enquiry endpoint.
-      var name = (form.elements.name.value || '').trim().split(/\s+/)[0] || 'there';
+    var name = (form.elements.name.value || '').trim().split(/\s+/)[0] || 'there';
+    window.DishaForms.send(form, 'Contact page form').then(function () {
       done.querySelector('.fdone-name').textContent = name;
       form.reset();
       form.hidden = true;
       done.hidden = false;
       card.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'start' });
-    });
+    }, function () {});
   });
 
   done.querySelector('[data-again]').addEventListener('click', function () {
-    var i = 0;
-    tabs.forEach(function (t, n) { if (t.getAttribute('aria-selected') === 'true') i = n; });
-    select(i, true);
+    done.hidden = true;
+    form.hidden = false;
+    form.elements.name.focus();
   });
 })();

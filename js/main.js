@@ -443,7 +443,10 @@
         }
         if (num) num.textContent = pad(i + 1);
         var cta = copy.querySelector('.dcta');
-        if (cta) cta.setAttribute('aria-label', 'Explore ' + name);
+        if (cta) {
+          cta.setAttribute('aria-label', 'Explore ' + name);
+          cta.setAttribute('href', 'destinations.html#d-' + name.toLowerCase().replace(/[^a-z0-9]+/g, '-'));
+        }
         copy.classList.remove('is-out');
         copy.classList.remove('is-fresh');
         void copy.offsetWidth;
